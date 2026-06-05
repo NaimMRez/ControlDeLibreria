@@ -34,16 +34,16 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <TextBox Grid.Column="0" materialDesign:HintAssist.Hint="Concepto" Text="{Binding Concepto}" Margin="0,0,8,0" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
-            <TextBox Grid.Column="1" materialDesign:HintAssist.Hint="Monto" Text="{Binding Monto}" Margin="4,0" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
-            <ComboBox Grid.Column="2" materialDesign:HintAssist.Hint="Categoría" Text="{Binding Categoria}" Margin="4,0" Style="{StaticResource MaterialDesignOutlinedComboBox}">
+            <TextBox Grid.Column="0" materialDesign:HintAssist.Hint="Concepto" Text="{Binding Concepto}" Margin="0,0,8,0" Style="{StaticResource MaterialDesignTextBox}"/>
+            <TextBox Grid.Column="1" materialDesign:HintAssist.Hint="Monto" Text="{Binding Monto}" Margin="4,0" Style="{StaticResource MaterialDesignTextBox}"/>
+            <ComboBox Grid.Column="2" materialDesign:HintAssist.Hint="Categoría" Text="{Binding Categoria}" Margin="4,0" Style="{StaticResource MaterialDesignComboBox}">
                 <ComboBoxItem Content="General"/>
                 <ComboBoxItem Content="Servicios"/>
                 <ComboBoxItem Content="Transporte"/>
                 <ComboBoxItem Content="Limpieza"/>
                 <ComboBoxItem Content="Otros"/>
             </ComboBox>
-            <TextBox Grid.Column="3" materialDesign:HintAssist.Hint="Comprobante" Text="{Binding Comprobante}" Margin="4,0" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+            <TextBox Grid.Column="3" materialDesign:HintAssist.Hint="Comprobante" Text="{Binding Comprobante}" Margin="4,0" Style="{StaticResource MaterialDesignTextBox}"/>
             <Button Grid.Column="4" Content="REGISTRAR" Command="{Binding ComandoRegistrar}" Margin="8,0,0,0" Style="{StaticResource MaterialDesignRaisedButton}"/>
         </Grid>
 

@@ -46,12 +46,12 @@
 
                 <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding EsEdicion, Converter={StaticResource BooleanToStringConverter}, ConverterParameter='Editar Usuario;Nuevo Usuario'}" FontSize="20" FontWeight="Bold" Margin="0,0,0,16"/>
 
-                <TextBox Grid.Row="1" Grid.Column="0" materialDesign:HintAssist.Hint="Usuario *" Text="{Binding FormNombreUsuario}" Margin="0,4,8,4" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
-                <TextBox Grid.Row="1" Grid.Column="1" materialDesign:HintAssist.Hint="Nombre Completo *" Text="{Binding FormNombreCompleto}" Margin="8,4,0,4" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                <TextBox Grid.Row="1" Grid.Column="0" materialDesign:HintAssist.Hint="Usuario *" Text="{Binding FormNombreUsuario}" Margin="0,4,8,4" Style="{StaticResource MaterialDesignTextBox}"/>
+                <TextBox Grid.Row="1" Grid.Column="1" materialDesign:HintAssist.Hint="Nombre Completo *" Text="{Binding FormNombreCompleto}" Margin="8,4,0,4" Style="{StaticResource MaterialDesignTextBox}"/>
 
-                <PasswordBox Grid.Row="2" Grid.Column="0" x:Name="PasswordBoxClave" materialDesign:HintAssist.Hint="Contraseña" Margin="0,4,8,4" Style="{StaticResource MaterialDesignOutlinedPasswordBox}"/>
+                <PasswordBox Grid.Row="2" Grid.Column="0" x:Name="PasswordBoxClave" materialDesign:HintAssist.Hint="Contraseña" Margin="0,4,8,4" Style="{StaticResource MaterialDesignPasswordBox}"/>
                 <ComboBox Grid.Row="2" Grid.Column="1" materialDesign:HintAssist.Hint="Rol"
-                          SelectedItem="{Binding FormRol}" Margin="8,4,0,4" Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                          SelectedItem="{Binding FormRol}" Margin="8,4,0,4" Style="{StaticResource MaterialDesignComboBox}">
                     <ComboBoxItem Content="Administrador"/>
                     <ComboBoxItem Content="Vendedor"/>
                     <ComboBoxItem Content="Almacenero"/>
@@ -61,7 +61,7 @@
 
                 <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
                     <Button Content="GUARDAR" Click="ButtonGuardar_Click" Margin="4" Style="{StaticResource MaterialDesignRaisedButton}"/>
-                    <Button Content="CANCELAR" Command="{Binding ComandoCancelar}" Margin="4" Style="{StaticResource MaterialDesignOutlinedButton}"/>
+                    <Button Content="CANCELAR" Command="{Binding ComandoCancelar}" Margin="4" Style="{StaticResource MaterialDesignFlatButton}"/>
                 </StackPanel>
             </Grid>
         </Border>

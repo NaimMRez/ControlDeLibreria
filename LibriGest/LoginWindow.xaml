@@ -27,10 +27,10 @@
         <!-- Login Form -->
         <StackPanel Grid.Row="1" Margin="32,24,32,0">
             <TextBox x:Name="TextBoxUsuario" materialDesign:HintAssist.Hint="Usuario"
-                     Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="0,8"/>
+                     Style="{StaticResource MaterialDesignTextBox}" Margin="0,8"/>
 
             <PasswordBox x:Name="PasswordBoxClave" materialDesign:HintAssist.Hint="Contraseña"
-                         Style="{StaticResource MaterialDesignOutlinedPasswordBox}" Margin="0,8"/>
+                         Style="{StaticResource MaterialDesignPasswordBox}" Margin="0,8"/>
 
             <Button Content="INGRESAR" Click="ButtonIngresar_Click" Margin="0,24,0,0" Style="{StaticResource MaterialDesignRaisedButton}"/>
 

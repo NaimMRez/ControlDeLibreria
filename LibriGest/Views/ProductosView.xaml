@@ -27,7 +27,7 @@
 
             <TextBox Grid.Column="0" 
                      materialDesign:HintAssist.Hint="Buscar por nombre o código de barras..."
-                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     Style="{StaticResource MaterialDesignTextBox}"
                      Text="{Binding Busqueda, UpdateSourceTrigger=PropertyChanged}"
                      Margin="0,0,12,0"/>
 
@@ -57,27 +57,27 @@
                            Text="{Binding EsEdicion, Converter={StaticResource BooleanToStringConverter}, ConverterParameter='Editar Producto;Nuevo Producto'}"
                            FontSize="20" FontWeight="Bold" Margin="0,0,0,16"/>
 
-                <TextBox Grid.Row="1" Grid.Column="0" materialDesign:HintAssist.Hint="Código de Barras" Text="{Binding FormCodigoBarras}" Margin="0,4,8,4" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
-                <TextBox Grid.Row="1" Grid.Column="1" materialDesign:HintAssist.Hint="Nombre *" Text="{Binding FormNombre}" Margin="8,4,0,4" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                <TextBox Grid.Row="1" Grid.Column="0" materialDesign:HintAssist.Hint="Código de Barras" Text="{Binding FormCodigoBarras}" Margin="0,4,8,4" Style="{StaticResource MaterialDesignTextBox}"/>
+                <TextBox Grid.Row="1" Grid.Column="1" materialDesign:HintAssist.Hint="Nombre *" Text="{Binding FormNombre}" Margin="8,4,0,4" Style="{StaticResource MaterialDesignTextBox}"/>
 
-                <TextBox Grid.Row="2" Grid.Column="0" materialDesign:HintAssist.Hint="Descripción" Text="{Binding FormDescripcion}" Margin="0,4,8,4" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                <TextBox Grid.Row="2" Grid.Column="0" materialDesign:HintAssist.Hint="Descripción" Text="{Binding FormDescripcion}" Margin="0,4,8,4" Style="{StaticResource MaterialDesignTextBox}"/>
                 
                 <ComboBox Grid.Row="2" Grid.Column="1" materialDesign:HintAssist.Hint="Categoría"
                           ItemsSource="{Binding Categorias}" DisplayMemberPath="Nombre" SelectedValuePath="Id" SelectedValue="{Binding FormCategoriaId}"
-                          Margin="8,4,0,4" Style="{StaticResource MaterialDesignOutlinedComboBox}"/>
+                          Margin="8,4,0,4" Style="{StaticResource MaterialDesignComboBox}"/>
 
                 <ComboBox Grid.Row="3" Grid.Column="0" materialDesign:HintAssist.Hint="Unidad"
                           ItemsSource="{Binding Unidades}" DisplayMemberPath="Nombre" SelectedValuePath="Id" SelectedValue="{Binding FormUnidadId}"
-                          Margin="0,4,8,4" Style="{StaticResource MaterialDesignOutlinedComboBox}"/>
+                          Margin="0,4,8,4" Style="{StaticResource MaterialDesignComboBox}"/>
 
-                <TextBox Grid.Row="3" Grid.Column="1" materialDesign:HintAssist.Hint="Stock Mínimo" Text="{Binding FormStockMinimo}" Margin="8,4,0,4" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                <TextBox Grid.Row="3" Grid.Column="1" materialDesign:HintAssist.Hint="Stock Mínimo" Text="{Binding FormStockMinimo}" Margin="8,4,0,4" Style="{StaticResource MaterialDesignTextBox}"/>
 
-                <TextBox Grid.Row="4" Grid.Column="0" materialDesign:HintAssist.Hint="Precio de Compra" Text="{Binding FormPrecioCompra}" Margin="0,4,8,4" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
-                <TextBox Grid.Row="4" Grid.Column="1" materialDesign:HintAssist.Hint="Precio de Venta" Text="{Binding FormPrecioVenta}" Margin="8,4,0,4" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                <TextBox Grid.Row="4" Grid.Column="0" materialDesign:HintAssist.Hint="Precio de Compra" Text="{Binding FormPrecioCompra}" Margin="0,4,8,4" Style="{StaticResource MaterialDesignTextBox}"/>
+                <TextBox Grid.Row="4" Grid.Column="1" materialDesign:HintAssist.Hint="Precio de Venta" Text="{Binding FormPrecioVenta}" Margin="8,4,0,4" Style="{StaticResource MaterialDesignTextBox}"/>
 
                 <StackPanel Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
                     <Button Content="GUARDAR" Command="{Binding ComandoGuardar}" Margin="4" Style="{StaticResource MaterialDesignRaisedButton}"/>
-                    <Button Content="CANCELAR" Command="{Binding ComandoCancelar}" Margin="4" Style="{StaticResource MaterialDesignOutlinedButton}"/>
+                    <Button Content="CANCELAR" Command="{Binding ComandoCancelar}" Margin="4" Style="{StaticResource MaterialDesignFlatButton}"/>
                 </StackPanel>
             </Grid>
         </Border>

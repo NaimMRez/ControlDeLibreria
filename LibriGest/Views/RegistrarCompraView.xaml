@@ -26,18 +26,18 @@
 
             <TextBox Grid.Column="0" x:Name="TextBoxCodigoBarras"
                      materialDesign:HintAssist.Hint="ESCANEAR CÓDIGO DE BARRAS AQUÍ..."
-                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     Style="{StaticResource MaterialDesignTextBox}"
                      Text="{Binding InputCodigoBarras, UpdateSourceTrigger=PropertyChanged}"
                      FontSize="16" Padding="12"
                      PreviewKeyDown="TextBoxCodigoBarras_PreviewKeyDown"/>
 
             <ComboBox Grid.Column="1" materialDesign:HintAssist.Hint="Proveedor"
                       ItemsSource="{Binding Proveedores}" DisplayMemberPath="Nombre" SelectedItem="{Binding ProveedorSeleccionado}"
-                      Margin="12,0,4,0" Style="{StaticResource MaterialDesignOutlinedComboBox}"/>
+                      Margin="12,0,4,0" Style="{StaticResource MaterialDesignComboBox}"/>
 
             <ComboBox Grid.Column="2" materialDesign:HintAssist.Hint="Almacén"
                       ItemsSource="{Binding Almacenes}" DisplayMemberPath="Nombre" SelectedItem="{Binding AlmacenSeleccionado}"
-                      Margin="4,0,0,0" Style="{StaticResource MaterialDesignOutlinedComboBox}"/>
+                      Margin="4,0,0,0" Style="{StaticResource MaterialDesignComboBox}"/>
         </Grid>
 
         <DataGrid Grid.Row="2" ItemsSource="{Binding Items}" AutoGenerateColumns="False"
@@ -65,7 +65,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
-            <Button Content="CANCELAR" Command="{Binding ComandoCancelarCompra}" Margin="4" Style="{StaticResource MaterialDesignOutlinedButton}"/>
+            <Button Content="CANCELAR" Command="{Binding ComandoCancelarCompra}" Margin="4" Style="{StaticResource MaterialDesignFlatButton}"/>
             <Button Content="COMPLETAR COMPRA" Command="{Binding ComandoCompletarCompra}" Margin="4" Style="{StaticResource MaterialDesignRaisedButton}"/>
         </StackPanel>
     </Grid>

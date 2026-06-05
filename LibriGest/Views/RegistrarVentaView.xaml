@@ -27,7 +27,7 @@
 
             <TextBox Grid.Column="0" x:Name="TextBoxCodigoBarras"
                      materialDesign:HintAssist.Hint="ESCANEAR CÓDIGO DE BARRAS AQUÍ..."
-                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     Style="{StaticResource MaterialDesignTextBox}"
                      Text="{Binding InputCodigoBarras, UpdateSourceTrigger=PropertyChanged}"
                      FontSize="16" Padding="12"
                      PreviewKeyDown="TextBoxCodigoBarras_PreviewKeyDown"/>
@@ -35,7 +35,7 @@
             <ComboBox Grid.Column="1" 
                       materialDesign:HintAssist.Hint="Cliente (opcional)"
                       ItemsSource="{Binding Clientes}" DisplayMemberPath="Nombre" SelectedItem="{Binding ClienteSeleccionado}"
-                      Margin="12,0,0,0" Style="{StaticResource MaterialDesignOutlinedComboBox}"/>
+                      Margin="12,0,0,0" Style="{StaticResource MaterialDesignComboBox}"/>
         </Grid>
 
         <!-- Grilla de items -->
@@ -74,7 +74,7 @@
             <TextBlock Grid.Row="0" Grid.Column="0" Text="SubTotal:" FontWeight="Bold" Margin="4"/>
             <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding SubTotal, StringFormat='{}{0:C}'}" HorizontalAlignment="Right" Margin="4"/>
 
-            <TextBox Grid.Row="1" Grid.Column="0" materialDesign:HintAssist.Hint="Descuento" Text="{Binding Descuento}" Margin="4" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+            <TextBox Grid.Row="1" Grid.Column="0" materialDesign:HintAssist.Hint="Descuento" Text="{Binding Descuento}" Margin="4" Style="{StaticResource MaterialDesignTextBox}"/>
             <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Descuento, StringFormat='{}{0:C}'}" HorizontalAlignment="Right" Margin="4"/>
 
             <TextBlock Grid.Row="2" Grid.Column="0" Text="TOTAL:" FontSize="18" FontWeight="Bold" Margin="4" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
@@ -83,7 +83,7 @@
 
         <!-- Botones -->
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
-            <Button Content="CANCELAR" Command="{Binding ComandoCancelarVenta}" Margin="4" Style="{StaticResource MaterialDesignOutlinedButton}"/>
+            <Button Content="CANCELAR" Command="{Binding ComandoCancelarVenta}" Margin="4" Style="{StaticResource MaterialDesignFlatButton}"/>
             <Button Content="COMPLETAR VENTA" Command="{Binding ComandoCompletarVenta}" Margin="4" Style="{StaticResource MaterialDesignRaisedButton}"/>
         </StackPanel>
     </Grid>

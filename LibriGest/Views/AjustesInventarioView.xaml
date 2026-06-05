@@ -26,24 +26,24 @@
 
             <TextBox Grid.Column="0" x:Name="TextBoxCodigoBarras"
                      materialDesign:HintAssist.Hint="ESCANEAR CÓDIGO DE BARRAS..."
-                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     Style="{StaticResource MaterialDesignTextBox}"
                      Text="{Binding InputCodigoBarras, UpdateSourceTrigger=PropertyChanged}"
                      FontSize="16" Padding="12"
                      PreviewKeyDown="TextBoxCodigoBarras_PreviewKeyDown"/>
 
             <ComboBox Grid.Column="1" materialDesign:HintAssist.Hint="Almacén"
                       ItemsSource="{Binding Almacenes}" DisplayMemberPath="Nombre" SelectedItem="{Binding AlmacenSeleccionado}"
-                      Margin="12,0,4,0" Style="{StaticResource MaterialDesignOutlinedComboBox}"/>
+                      Margin="12,0,4,0" Style="{StaticResource MaterialDesignComboBox}"/>
 
             <ComboBox Grid.Column="2" materialDesign:HintAssist.Hint="Tipo"
-                      SelectedItem="{Binding Tipo}" Margin="4,0,0,0" Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                      SelectedItem="{Binding Tipo}" Margin="4,0,0,0" Style="{StaticResource MaterialDesignComboBox}">
                 <ComboBoxItem Content="Entrada"/>
                 <ComboBoxItem Content="Salida"/>
             </ComboBox>
         </Grid>
 
         <TextBox Grid.Row="2" materialDesign:HintAssist.Hint="Motivo del ajuste"
-                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                 Style="{StaticResource MaterialDesignTextBox}"
                  Text="{Binding Motivo}" Margin="0,0,0,12"/>
 
         <DataGrid Grid.Row="3" ItemsSource="{Binding Items}" AutoGenerateColumns="False"
@@ -80,7 +80,7 @@
         </DataGrid>
 
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
-            <Button Content="CANCELAR" Command="{Binding ComandoCancelar}" Margin="4" Style="{StaticResource MaterialDesignOutlinedButton}"/>
+            <Button Content="CANCELAR" Command="{Binding ComandoCancelar}" Margin="4" Style="{StaticResource MaterialDesignFlatButton}"/>
             <Button Content="REGISTRAR AJUSTE" Command="{Binding ComandoRegistrarAjuste}" Margin="4" Style="{StaticResource MaterialDesignRaisedButton}"/>
         </StackPanel>
     </Grid>
