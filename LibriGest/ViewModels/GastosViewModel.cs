@@ -69,8 +69,9 @@ namespace LibriGest.ViewModels
             using var context = new Data.AppDbContext();
             CajaAbierta = context.Cajas.FirstOrDefault(c => c.Estado == "Abierta");
 
+            var cajaId = CajaAbierta?.Id ?? 0;
             var lista = context.Gastos
-                .Where(g => g.CajaId == (CajaAbierta?.Id ?? 0))
+                .Where(g => g.CajaId == cajaId)
                 .OrderByDescending(g => g.Fecha)
                 .ToList();
 

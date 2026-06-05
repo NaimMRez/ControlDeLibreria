@@ -1,4 +1,5 @@
 using LibriGest.Models;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 
 namespace LibriGest.ViewModels
