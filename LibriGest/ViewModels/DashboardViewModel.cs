@@ -77,6 +77,7 @@ namespace LibriGest.ViewModels
             var hoy = DateTime.Now.Date;
             VentasHoy = context.Ventas
                 .Where(v => v.Fecha >= hoy && v.Estado == "Completada")
+                .ToList()
                 .Sum(v => (decimal?)v.Total) ?? 0;
 
             TotalClientes = context.Clientes.Count();
@@ -87,8 +88,8 @@ namespace LibriGest.ViewModels
             if (caja != null)
             {
                 EstadoCaja = "Abierta";
-                var ventasCaja = context.Ventas.Where(v => v.CajaId == caja.Id && v.Estado == "Completada").Sum(v => (decimal?)v.Total) ?? 0;
-                var gastosCaja = context.Gastos.Where(g => g.CajaId == caja.Id).Sum(g => (decimal?)g.Monto) ?? 0;
+                var ventasCaja = context.Ventas.Where(v => v.CajaId == caja.Id && v.Estado == "Completada").ToList().Sum(v => (decimal?)v.Total) ?? 0;
+                var gastosCaja = context.Gastos.Where(g => g.CajaId == caja.Id).ToList().Sum(g => (decimal?)g.Monto) ?? 0;
                 MontoCaja = caja.MontoInicial + ventasCaja - gastosCaja;
             }
             else

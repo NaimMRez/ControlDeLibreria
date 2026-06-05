@@ -77,8 +77,8 @@ namespace LibriGest.ViewModels
                 MostrarCierre = true;
 
                 // Calcular totales actuales
-                var ventas = context.Ventas.Where(v => v.CajaId == CajaActual.Id && v.Estado == "Completada").Sum(v => (decimal?)v.Total) ?? 0;
-                var gastos = context.Gastos.Where(g => g.CajaId == CajaActual.Id).Sum(g => (decimal?)g.Monto) ?? 0;
+                var ventas = context.Ventas.Where(v => v.CajaId == CajaActual.Id && v.Estado == "Completada").ToList().Sum(v => (decimal?)v.Total) ?? 0;
+                var gastos = context.Gastos.Where(g => g.CajaId == CajaActual.Id).ToList().Sum(g => (decimal?)g.Monto) ?? 0;
 
                 CajaActual.TotalVentas = ventas;
                 CajaActual.TotalGastos = gastos;
