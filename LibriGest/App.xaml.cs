@@ -10,22 +10,31 @@ namespace LibriGest
         {
             base.OnStartup(e);
 
-            // Inicializar base de datos
-            using (var context = new Data.AppDbContext())
+            try
             {
-                context.Database.EnsureCreated();
-                Data.DbInitializer.Initialize(context);
-            }
+                // Inicializar base de datos
+                using (var context = new Data.AppDbContext())
+                {
+                    context.Database.EnsureCreated();
+                    Data.DbInitializer.Initialize(context);
+                }
 
-            // Mostrar login primero
-            var loginWindow = new LoginWindow();
-            if (loginWindow.ShowDialog() == true)
-            {
-                var mainWindow = new MainWindow();
-                mainWindow.Show();
+                // Mostrar login primero
+                var loginWindow = new LoginWindow();
+                if (loginWindow.ShowDialog() == true)
+                {
+                    var mainWindow = new MainWindow();
+                    mainWindow.Show();
+                }
+                else
+                {
+                    Shutdown();
+                }
             }
-            else
+            catch (Exception ex)
             {
+                MessageBox.Show($"Error al iniciar la aplicación:\n\n{ex.Message}\n\n{ex.InnerException?.Message}", 
+                    "Error de Inicio", MessageBoxButton.OK, MessageBoxImage.Error);
                 Shutdown();
             }
         }
