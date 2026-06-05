@@ -1,0 +1,94 @@
+<UserControl x:Class="LibriGest.Views.CajaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Titulo -->
+        <TextBlock Grid.Row="0" Text="Gestión de Caja" FontSize="28" FontWeight="Bold" Margin="0,0,0,16" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+
+        <!-- Panel de Apertura -->
+        <Border Grid.Row="1" Background="{DynamicResource MaterialDesignCardBackground}" CornerRadius="8" Padding="20" Margin="0,0,0,12"
+                Visibility="{Binding MostrarApertura, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" materialDesign:HintAssist.Hint="Monto de Apertura"
+                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                         Text="{Binding MontoApertura}" FontSize="16" Padding="12"/>
+                <Button Grid.Column="1" Content="INICIAR CAJA" Command="{Binding ComandoIniciarCaja}" Margin="12,0,0,0" Style="{StaticResource MaterialDesignRaisedButton}"/>
+            </Grid>
+        </Border>
+
+        <!-- Panel de Cierre -->
+        <Border Grid.Row="2" Background="{DynamicResource MaterialDesignCardBackground}" CornerRadius="8" Padding="20" Margin="0,0,0,12"
+                Visibility="{Binding MostrarCierre, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="CAJA ABIERTA" FontWeight="Bold" Foreground="Green" FontSize="16" Margin="0,0,16,8"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding CajaActual.FechaApertura, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}" Opacity="0.7" Margin="0,0,0,8"/>
+
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Monto Inicial:" Margin="0,4" FontWeight="Bold"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding CajaActual.MontoInicial, StringFormat='{}{0:C}'}" Margin="0,4"/>
+
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Total Ventas:" Margin="0,4" FontWeight="Bold"/>
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding CajaActual.TotalVentas, StringFormat='{}{0:C}'}" Margin="0,4" Foreground="Green"/>
+
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="Total Gastos:" Margin="0,4" FontWeight="Bold"/>
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding CajaActual.TotalGastos, StringFormat='{}{0:C}'}" Margin="0,4" Foreground="Red"/>
+
+                <StackPanel Grid.Row="0" Grid.RowSpan="4" Grid.Column="2" VerticalAlignment="Center" Margin="24,0,0,0">
+                    <TextBlock Text="EFECTIVO ESPERADO:" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <TextBlock Text="{Binding MontoCierre, StringFormat='{}{0:C}'}" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+                    <Button Content="CERRAR CAJA" Command="{Binding ComandoCerrarCaja}" Margin="0,12,0,0" Style="{StaticResource MaterialDesignRaisedButton}" Background="Red"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Historial -->
+        <Grid Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Text="Historial de Cajas" FontSize="18" FontWeight="Bold" Margin="0,0,0,8"/>
+
+            <DataGrid Grid.Row="1" ItemsSource="{Binding CajasHistoricas}" AutoGenerateColumns="False"
+                      CanUserAddRows="False" IsReadOnly="True" Style="{StaticResource MaterialDesignDataGrid}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="APERTURA" Binding="{Binding FechaApertura, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}" Width="130"/>
+                    <DataGridTextColumn Header="CIERRE" Binding="{Binding FechaCierre, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}" Width="130"/>
+                    <DataGridTextColumn Header="MONTO INICIAL" Binding="{Binding MontoInicial, StringFormat='{}{0:C}'}" Width="110"/>
+                    <DataGridTextColumn Header="VENTAS" Binding="{Binding TotalVentas, StringFormat='{}{0:C}'}" Width="100"/>
+                    <DataGridTextColumn Header="GASTOS" Binding="{Binding TotalGastos, StringFormat='{}{0:C}'}" Width="100"/>
+                    <DataGridTextColumn Header="MONTO CIERRE" Binding="{Binding MontoCierre, StringFormat='{}{0:C}'}" Width="110"/>
+                    <DataGridTextColumn Header="ESTADO" Binding="{Binding Estado}" Width="80"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</UserControl>

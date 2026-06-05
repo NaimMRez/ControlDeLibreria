@@ -1,0 +1,87 @@
+<UserControl x:Class="LibriGest.Views.AjustesInventarioView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Ajustes de Inventario" FontSize="28" FontWeight="Bold" Margin="0,0,0,16" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+
+        <Grid Grid.Row="1" Margin="0,0,0,12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="0" x:Name="TextBoxCodigoBarras"
+                     materialDesign:HintAssist.Hint="ESCANEAR CÓDIGO DE BARRAS..."
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     Text="{Binding InputCodigoBarras, UpdateSourceTrigger=PropertyChanged}"
+                     FontSize="16" Padding="12"
+                     PreviewKeyDown="TextBoxCodigoBarras_PreviewKeyDown"/>
+
+            <ComboBox Grid.Column="1" materialDesign:HintAssist.Hint="Almacén"
+                      ItemsSource="{Binding Almacenes}" DisplayMemberPath="Nombre" SelectedItem="{Binding AlmacenSeleccionado}"
+                      Margin="12,0,4,0" Style="{StaticResource MaterialDesignOutlinedComboBox}"/>
+
+            <ComboBox Grid.Column="2" materialDesign:HintAssist.Hint="Tipo"
+                      SelectedItem="{Binding Tipo}" Margin="4,0,0,0" Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                <ComboBoxItem Content="Entrada"/>
+                <ComboBoxItem Content="Salida"/>
+            </ComboBox>
+        </Grid>
+
+        <TextBox Grid.Row="2" materialDesign:HintAssist.Hint="Motivo del ajuste"
+                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                 Text="{Binding Motivo}" Margin="0,0,0,12"/>
+
+        <DataGrid Grid.Row="3" ItemsSource="{Binding Items}" AutoGenerateColumns="False"
+                  CanUserAddRows="False" IsReadOnly="False" Style="{StaticResource MaterialDesignDataGrid}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="CÓDIGO" Binding="{Binding CodigoBarras}" Width="120" IsReadOnly="True"/>
+                <DataGridTextColumn Header="PRODUCTO" Binding="{Binding Nombre}" Width="*" IsReadOnly="True"/>
+                <DataGridTextColumn Header="ANTERIOR" Binding="{Binding CantidadAnterior}" Width="90" IsReadOnly="True"/>
+                <DataGridTextColumn Header="NUEVA" Binding="{Binding CantidadNueva}" Width="90"/>
+                <DataGridTextColumn Header="DIF." Binding="{Binding Diferencia}" Width="80" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Foreground" Value="Green"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Diferencia}" Value="0">
+                                    <Setter Property="Foreground" Value="Black"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Diferencia, Converter={StaticResource NegativeValueConverter}}" Value="True">
+                                    <Setter Property="Foreground" Value="Red"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTemplateColumn Width="60">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="X" Command="{Binding DataContext.ComandoEliminarItem, RelativeSource={RelativeSource AncestorType=DataGrid}}" 
+                                    CommandParameter="{Binding}" Style="{StaticResource MaterialDesignFlatButton}" Foreground="Red"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
+            <Button Content="CANCELAR" Command="{Binding ComandoCancelar}" Margin="4" Style="{StaticResource MaterialDesignOutlinedButton}"/>
+            <Button Content="REGISTRAR AJUSTE" Command="{Binding ComandoRegistrarAjuste}" Margin="4" Style="{StaticResource MaterialDesignRaisedButton}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

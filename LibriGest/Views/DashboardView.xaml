@@ -1,0 +1,124 @@
+<UserControl x:Class="LibriGest.Views.DashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Dashboard" FontSize="28" FontWeight="Bold" Margin="0,0,0,24" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+
+        <!-- Tarjetas de resumen -->
+        <UniformGrid Grid.Row="1" Columns="3" Margin="0,0,0,24">
+            <!-- Productos -->
+            <Border Background="{DynamicResource MaterialDesignCardBackground}" CornerRadius="8" Padding="20" Margin="0,0,8,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="PRODUCTOS" Opacity="0.6" FontSize="12" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding TotalProductos}" FontSize="32" FontWeight="Bold" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+                    <materialDesign:PackIcon Grid.RowSpan="2" Grid.Column="1" Kind="PackageVariant" Width="40" Height="40" Opacity="0.3" VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+
+            <!-- Stock Bajo -->
+            <Border Background="{DynamicResource MaterialDesignCardBackground}" CornerRadius="8" Padding="20" Margin="4,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="STOCK BAJO" Opacity="0.6" FontSize="12" FontWeight="Bold" Foreground="Red"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding ProductosStockBajo}" FontSize="32" FontWeight="Bold" Foreground="Red"/>
+                    <materialDesign:PackIcon Grid.RowSpan="2" Grid.Column="1" Kind="AlertCircle" Width="40" Height="40" Opacity="0.3" VerticalAlignment="Center" Foreground="Red"/>
+                </Grid>
+            </Border>
+
+            <!-- Ventas Hoy -->
+            <Border Background="{DynamicResource MaterialDesignCardBackground}" CornerRadius="8" Padding="20" Margin="8,0,0,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="VENTAS HOY" Opacity="0.6" FontSize="12" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding VentasHoy, StringFormat='{}{0:C}'}" FontSize="28" FontWeight="Bold" Foreground="Green"/>
+                    <materialDesign:PackIcon Grid.RowSpan="2" Grid.Column="1" Kind="CashMultiple" Width="40" Height="40" Opacity="0.3" VerticalAlignment="Center" Foreground="Green"/>
+                </Grid>
+            </Border>
+        </UniformGrid>
+
+        <!-- Segunda fila de tarjetas -->
+        <UniformGrid Grid.Row="2" Columns="3">
+            <!-- Clientes -->
+            <Border Background="{DynamicResource MaterialDesignCardBackground}" CornerRadius="8" Padding="20" Margin="0,0,8,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="CLIENTES" Opacity="0.6" FontSize="12" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding TotalClientes}" FontSize="32" FontWeight="Bold" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+                    <materialDesign:PackIcon Grid.RowSpan="2" Grid.Column="1" Kind="AccountGroup" Width="40" Height="40" Opacity="0.3" VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+
+            <!-- Proveedores -->
+            <Border Background="{DynamicResource MaterialDesignCardBackground}" CornerRadius="8" Padding="20" Margin="4,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="PROVEEDORES" Opacity="0.6" FontSize="12" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding TotalProveedores}" FontSize="32" FontWeight="Bold" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+                    <materialDesign:PackIcon Grid.RowSpan="2" Grid.Column="1" Kind="TruckDelivery" Width="40" Height="40" Opacity="0.3" VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+
+            <!-- Estado Caja -->
+            <Border Background="{DynamicResource MaterialDesignCardBackground}" CornerRadius="8" Padding="20" Margin="8,0,0,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="CAJA" Opacity="0.6" FontSize="12" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="1" Text="{Binding EstadoCaja}" FontSize="20" FontWeight="Bold" 
+                               Foreground="{Binding EstadoCaja, Converter={StaticResource EstadoCajaColorConverter}}"/>
+                    <TextBlock Grid.Row="2" Text="{Binding MontoCaja, StringFormat='{}{0:C}'}" FontSize="16" Opacity="0.8"/>
+                </Grid>
+            </Border>
+        </UniformGrid>
+    </Grid>
+</UserControl>

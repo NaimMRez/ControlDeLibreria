@@ -1,0 +1,15 @@
+# .NET Core / WPF
+bin/
+obj/
+*.user
+*.suo
+.vs/
+.idea/
+
+# Base de datos local
+*.db
+*.db-shm
+*.db-wal
+
+# Otros
+*.log

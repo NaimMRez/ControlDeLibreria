@@ -1,0 +1,149 @@
+<Window x:Class="LibriGest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="LibriGest" Height="700" Width="1200"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="260"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <Border Grid.Column="0" Background="{DynamicResource PrimaryHueMidBrush}" Margin="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Logo / Titulo -->
+                <StackPanel Grid.Row="0" Margin="16,24,16,16" Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="BookOpenVariant" Width="32" Height="32" Foreground="White"/>
+                    <TextBlock Text="LibriGest" FontSize="22" FontWeight="Bold" Foreground="White" Margin="12,0,0,0" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Nombre Tienda -->
+                <TextBlock Grid.Row="1" x:Name="TextBlockNombreTienda" Text="Mi Librería" FontSize="14" Foreground="{DynamicResource MaterialDesignDarkForeground}" Margin="16,0,16,16" Opacity="0.8"/>
+
+                <!-- Menu -->
+                <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                    <StackPanel x:Name="MenuPanel" Margin="8,0">
+                        
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuDashboard_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="ViewDashboard" Margin="0,0,12,0"/>
+                                <TextBlock Text="Dashboard"/>
+                            </StackPanel>
+                        </Button>
+
+                        <TextBlock Text="VENTAS" FontSize="10" FontWeight="Bold" Foreground="White" Opacity="0.6" Margin="12,16,0,4"/>
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuRegistrarVenta_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="CashRegister" Margin="0,0,12,0"/>
+                                <TextBlock Text="Registrar Venta"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuGestionarVentas_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="ClipboardList" Margin="0,0,12,0"/>
+                                <TextBlock Text="Gestionar Ventas"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuClientes_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="AccountGroup" Margin="0,0,12,0"/>
+                                <TextBlock Text="Clientes"/>
+                            </StackPanel>
+                        </Button>
+
+                        <TextBlock Text="COMPRAS" FontSize="10" FontWeight="Bold" Foreground="White" Opacity="0.6" Margin="12,16,0,4"/>
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuRegistrarCompra_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="CartPlus" Margin="0,0,12,0"/>
+                                <TextBlock Text="Registrar Compra"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuGestionarCompras_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="ClipboardText" Margin="0,0,12,0"/>
+                                <TextBlock Text="Gestionar Compras"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuProveedores_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="TruckDelivery" Margin="0,0,12,0"/>
+                                <TextBlock Text="Proveedores"/>
+                            </StackPanel>
+                        </Button>
+
+                        <TextBlock Text="ALMACÉN" FontSize="10" FontWeight="Bold" Foreground="White" Opacity="0.6" Margin="12,16,0,4"/>
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuProductos_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="PackageVariant" Margin="0,0,12,0"/>
+                                <TextBlock Text="Productos"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuAjustesInventario_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="ArchiveRefresh" Margin="0,0,12,0"/>
+                                <TextBlock Text="Ajustes de Inventario"/>
+                            </StackPanel>
+                        </Button>
+
+                        <TextBlock Text="CAJA" FontSize="10" FontWeight="Bold" Foreground="White" Opacity="0.6" Margin="12,16,0,4"/>
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuCaja_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="CashMultiple" Margin="0,0,12,0"/>
+                                <TextBlock Text="Gestión de Caja"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuGastos_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Receipt" Margin="0,0,12,0"/>
+                                <TextBlock Text="Gastos / Caja Chica"/>
+                            </StackPanel>
+                        </Button>
+
+                        <TextBlock Text="SISTEMA" FontSize="10" FontWeight="Bold" Foreground="White" Opacity="0.6" Margin="12,16,0,4"/>
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuConfiguracion_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Cog" Margin="0,0,12,0"/>
+                                <TextBlock Text="Configuración"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuUsuarios_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="AccountCog" Margin="0,0,12,0"/>
+                                <TextBlock Text="Usuarios"/>
+                            </StackPanel>
+                        </Button>
+
+                    </StackPanel>
+                </ScrollViewer>
+
+                <!-- Usuario actual -->
+                <Border Grid.Row="3" Background="{DynamicResource PrimaryHueDarkBrush}" Padding="16">
+                    <StackPanel>
+                        <TextBlock x:Name="TextBlockUsuario" Text="Admin" Foreground="White" FontWeight="Bold"/>
+                        <TextBlock x:Name="TextBlockRol" Text="Administrador" Foreground="White" Opacity="0.7" FontSize="12"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- Contenido Principal -->
+        <Border Grid.Column="1" Background="{DynamicResource MaterialDesignPaper}">
+            <ContentControl x:Name="MainContentArea" Margin="24"/>
+        </Border>
+    </Grid>
+</Window>

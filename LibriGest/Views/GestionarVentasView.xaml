@@ -1,0 +1,104 @@
+<UserControl x:Class="LibriGest.Views.GestionarVentasView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Titulo -->
+        <TextBlock Grid.Row="0" Text="Gestionar Ventas" FontSize="28" FontWeight="Bold" Margin="0,0,0,16" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+
+        <!-- Filtros -->
+        <Grid Grid.Row="1" Margin="0,0,0,12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="0" materialDesign:HintAssist.Hint="Buscar por cliente o número de venta..."
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     Text="{Binding Busqueda, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="0,0,8,0"/>
+
+            <DatePicker Grid.Column="1" materialDesign:HintAssist.Hint="Desde" SelectedDate="{Binding FechaDesde}" Margin="4,0" Style="{StaticResource MaterialDesignOutlinedDatePicker}"/>
+            <DatePicker Grid.Column="2" materialDesign:HintAssist.Hint="Hasta" SelectedDate="{Binding FechaHasta}" Margin="4,0" Style="{StaticResource MaterialDesignOutlinedDatePicker}"/>
+            <Button Grid.Column="3" Content="VER DETALLE" Command="{Binding ComandoVerDetalle}" Margin="4,0" Style="{StaticResource MaterialDesignFlatButton}"/>
+            <Button Grid.Column="4" Content="ANULAR" Command="{Binding ComandoAnular}" Margin="4,0" Foreground="Red" Style="{StaticResource MaterialDesignFlatButton}"/>
+        </Grid>
+
+        <!-- Detalle (overlay) -->
+        <Border Grid.Row="2" Background="{DynamicResource MaterialDesignCardBackground}" CornerRadius="8" Padding="20"
+                Visibility="{Binding MostrarDetalle, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                    <TextBlock Text="Venta #" FontSize="20" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding VentaSeleccionada.Id}" FontSize="20" FontWeight="Bold" Margin="4,0,0,0"/>
+                    <TextBlock Text="{""" Margin="12,0"/>
+                    <TextBlock Text="{Binding VentaSeleccionada.Estado}" FontWeight="Bold" Foreground="{Binding VentaSeleccionada.Estado, Converter={StaticResource EstadoVentaColorConverter}}"/>
+                    <TextBlock Text="{""" Margin="0,0,12,0"/>
+                </StackPanel>
+
+                <TextBlock Grid.Row="1" Text="{Binding VentaSeleccionada.Fecha, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}" Opacity="0.7" Margin="0,4,0,8"/>
+
+                <DataGrid Grid.Row="2" ItemsSource="{Binding VentaDetalles}" AutoGenerateColumns="False" 
+                          CanUserAddRows="False" IsReadOnly="True" Style="{StaticResource MaterialDesignDataGrid}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="PRODUCTO" Binding="{Binding Producto.Nombre}" Width="*"/>
+                        <DataGridTextColumn Header="CANT." Binding="{Binding Cantidad}" Width="80"/>
+                        <DataGridTextColumn Header="P. UNIT." Binding="{Binding PrecioUnitario, StringFormat='{}{0:C}'}" Width="100"/>
+                        <DataGridTextColumn Header="TOTAL" Binding="{Binding Total, StringFormat='{}{0:C}'}" Width="100"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0">
+                    <TextBlock Text="TOTAL:" FontWeight="Bold" FontSize="16" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding VentaSeleccionada.Total, StringFormat='{}{0:C}'}" FontWeight="Bold" FontSize="16" Margin="8,0,0,0" VerticalAlignment="Center" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+                    <Button Content="CERRAR" Command="{Binding ComandoCerrarDetalle}" Margin="24,0,0,0" Style="{StaticResource MaterialDesignOutlinedButton}"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Lista -->
+        <DataGrid Grid.Row="2" ItemsSource="{Binding Ventas}" SelectedItem="{Binding VentaSeleccionada}"
+                  AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True"
+                  Style="{StaticResource MaterialDesignDataGrid}"
+                  Visibility="{Binding MostrarDetalle, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="60"/>
+                <DataGridTextColumn Header="FECHA" Binding="{Binding Fecha, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}" Width="130"/>
+                <DataGridTextColumn Header="CLIENTE" Binding="{Binding Cliente.Nombre}" Width="*"/>
+                <DataGridTextColumn Header="TOTAL" Binding="{Binding Total, StringFormat='{}{0:C}'}" Width="100"/>
+                <DataGridTextColumn Header="ESTADO" Binding="{Binding Estado}" Width="100">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Foreground" Value="Green"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Estado}" Value="Anulada">
+                                    <Setter Property="Foreground" Value="Red"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
