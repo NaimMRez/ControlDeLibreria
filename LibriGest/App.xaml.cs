@@ -30,6 +30,9 @@ namespace LibriGest
 
             try
             {
+                // Evitar que la app se cierre cuando el login (primer window) se cierra
+                ShutdownMode = ShutdownMode.OnExplicitShutdown;
+
                 // Inicializar base de datos
                 using (var context = new Data.AppDbContext())
                 {
@@ -44,7 +47,9 @@ namespace LibriGest
                 if (result == true)
                 {
                     var mainWindow = new MainWindow();
+                    MainWindow = mainWindow;
                     mainWindow.Show();
+                    ShutdownMode = ShutdownMode.OnMainWindowClose;
                 }
                 else
                 {
