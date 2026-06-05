@@ -26,26 +26,26 @@
                 </Grid.RowDefinitions>
 
                 <TextBox Grid.Row="0" materialDesign:HintAssist.Hint="Nombre de la Tienda"
-                         Style="{StaticResource MaterialDesignTextBox}"
+                        
                          Text="{Binding NombreTienda}" Margin="0,4" FontSize="16"/>
 
                 <TextBox Grid.Row="1" materialDesign:HintAssist.Hint="Dirección"
-                         Style="{StaticResource MaterialDesignTextBox}"
+                        
                          Text="{Binding Direccion}" Margin="0,4"/>
 
                 <TextBox Grid.Row="2" materialDesign:HintAssist.Hint="Teléfono"
-                         Style="{StaticResource MaterialDesignTextBox}"
+                        
                          Text="{Binding Telefono}" Margin="0,4"/>
 
                 <ComboBox Grid.Row="3" materialDesign:HintAssist.Hint="Moneda"
-                          SelectedItem="{Binding Moneda}" Margin="0,4" Style="{StaticResource MaterialDesignComboBox}">
+                          SelectedItem="{Binding Moneda}" Margin="0,4">
                     <ComboBoxItem Content="S/"/>
                     <ComboBoxItem Content="$"/>
                     <ComboBoxItem Content="€"/>
                 </ComboBox>
 
                 <Button Grid.Row="4" Content="GUARDAR CONFIGURACIÓN" Command="{Binding ComandoGuardar}" 
-                        Margin="0,16,0,0" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignRaisedButton}"/>
+                        Margin="0,16,0,0" HorizontalAlignment="Right"/>
             </Grid>
         </Border>
     </Grid>

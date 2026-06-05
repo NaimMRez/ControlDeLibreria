@@ -26,9 +26,9 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBox Grid.Column="0" materialDesign:HintAssist.Hint="Monto de Apertura"
-                         Style="{StaticResource MaterialDesignTextBox}"
+                        
                          Text="{Binding MontoApertura}" FontSize="16" Padding="12"/>
-                <Button Grid.Column="1" Content="INICIAR CAJA" Command="{Binding ComandoIniciarCaja}" Margin="12,0,0,0" Style="{StaticResource MaterialDesignRaisedButton}"/>
+                <Button Grid.Column="1" Content="INICIAR CAJA" Command="{Binding ComandoIniciarCaja}" Margin="12,0,0,0"/>
             </Grid>
         </Border>
 
@@ -63,7 +63,7 @@
                 <StackPanel Grid.Row="0" Grid.RowSpan="4" Grid.Column="2" VerticalAlignment="Center" Margin="24,0,0,0">
                     <TextBlock Text="EFECTIVO ESPERADO:" FontWeight="Bold" HorizontalAlignment="Center"/>
                     <TextBlock Text="{Binding MontoCierre, StringFormat='{}{0:C}'}" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
-                    <Button Content="CERRAR CAJA" Command="{Binding ComandoCerrarCaja}" Margin="0,12,0,0" Style="{StaticResource MaterialDesignRaisedButton}" Background="Red"/>
+                    <Button Content="CERRAR CAJA" Command="{Binding ComandoCerrarCaja}" Margin="0,12,0,0" Background="Red"/>
                 </StackPanel>
             </Grid>
         </Border>
@@ -78,7 +78,7 @@
             <TextBlock Grid.Row="0" Text="Historial de Cajas" FontSize="18" FontWeight="Bold" Margin="0,0,0,8"/>
 
             <DataGrid Grid.Row="1" ItemsSource="{Binding CajasHistoricas}" AutoGenerateColumns="False"
-                      CanUserAddRows="False" IsReadOnly="True" Style="{StaticResource MaterialDesignDataGrid}">
+                      CanUserAddRows="False" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="APERTURA" Binding="{Binding FechaApertura, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}" Width="130"/>
                     <DataGridTextColumn Header="CIERRE" Binding="{Binding FechaCierre, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}" Width="130"/>

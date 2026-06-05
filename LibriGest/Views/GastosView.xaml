@@ -34,22 +34,22 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <TextBox Grid.Column="0" materialDesign:HintAssist.Hint="Concepto" Text="{Binding Concepto}" Margin="0,0,8,0" Style="{StaticResource MaterialDesignTextBox}"/>
-            <TextBox Grid.Column="1" materialDesign:HintAssist.Hint="Monto" Text="{Binding Monto}" Margin="4,0" Style="{StaticResource MaterialDesignTextBox}"/>
-            <ComboBox Grid.Column="2" materialDesign:HintAssist.Hint="Categoría" Text="{Binding Categoria}" Margin="4,0" Style="{StaticResource MaterialDesignComboBox}">
+            <TextBox Grid.Column="0" materialDesign:HintAssist.Hint="Concepto" Text="{Binding Concepto}" Margin="0,0,8,0"/>
+            <TextBox Grid.Column="1" materialDesign:HintAssist.Hint="Monto" Text="{Binding Monto}" Margin="4,0"/>
+            <ComboBox Grid.Column="2" materialDesign:HintAssist.Hint="Categoría" Text="{Binding Categoria}" Margin="4,0">
                 <ComboBoxItem Content="General"/>
                 <ComboBoxItem Content="Servicios"/>
                 <ComboBoxItem Content="Transporte"/>
                 <ComboBoxItem Content="Limpieza"/>
                 <ComboBoxItem Content="Otros"/>
             </ComboBox>
-            <TextBox Grid.Column="3" materialDesign:HintAssist.Hint="Comprobante" Text="{Binding Comprobante}" Margin="4,0" Style="{StaticResource MaterialDesignTextBox}"/>
-            <Button Grid.Column="4" Content="REGISTRAR" Command="{Binding ComandoRegistrar}" Margin="8,0,0,0" Style="{StaticResource MaterialDesignRaisedButton}"/>
+            <TextBox Grid.Column="3" materialDesign:HintAssist.Hint="Comprobante" Text="{Binding Comprobante}" Margin="4,0"/>
+            <Button Grid.Column="4" Content="REGISTRAR" Command="{Binding ComandoRegistrar}" Margin="8,0,0,0"/>
         </Grid>
 
         <!-- Lista -->
         <DataGrid Grid.Row="3" ItemsSource="{Binding Gastos}" AutoGenerateColumns="False"
-                  CanUserAddRows="False" IsReadOnly="True" Style="{StaticResource MaterialDesignDataGrid}">
+                  CanUserAddRows="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="FECHA" Binding="{Binding Fecha, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}" Width="130"/>
                 <DataGridTextColumn Header="CONCEPTO" Binding="{Binding Concepto}" Width="*"/>
@@ -59,7 +59,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Content="X" Command="{Binding DataContext.ComandoEliminar, RelativeSource={RelativeSource AncestorType=DataGrid}}" 
-                                    CommandParameter="{Binding}" Style="{StaticResource MaterialDesignFlatButton}" Foreground="Red"/>
+                                    CommandParameter="{Binding}" Foreground="Red"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

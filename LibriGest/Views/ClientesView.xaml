@@ -24,13 +24,13 @@
             </Grid.ColumnDefinitions>
 
             <TextBox Grid.Column="0" materialDesign:HintAssist.Hint="Buscar cliente..."
-                     Style="{StaticResource MaterialDesignTextBox}"
+                    
                      Text="{Binding Busqueda, UpdateSourceTrigger=PropertyChanged}"
                      Margin="0,0,12,0"/>
 
-            <Button Grid.Column="1" Content="NUEVO" Command="{Binding ComandoNuevo}" Margin="4,0" Style="{StaticResource MaterialDesignRaisedButton}"/>
-            <Button Grid.Column="2" Content="EDITAR" Command="{Binding ComandoEditar}" Margin="4,0" Style="{StaticResource MaterialDesignFlatButton}"/>
-            <Button Grid.Column="3" Content="ELIMINAR" Command="{Binding ComandoEliminar}" Margin="4,0" Foreground="Red" Style="{StaticResource MaterialDesignFlatButton}"/>
+            <Button Grid.Column="1" Content="NUEVO" Command="{Binding ComandoNuevo}" Margin="4,0"/>
+            <Button Grid.Column="2" Content="EDITAR" Command="{Binding ComandoEditar}" Margin="4,0"/>
+            <Button Grid.Column="3" Content="ELIMINAR" Command="{Binding ComandoEliminar}" Margin="4,0" Foreground="Red"/>
         </Grid>
 
         <Border Grid.Row="2" Background="{DynamicResource MaterialDesignCardBackground}" CornerRadius="8" Padding="20" Margin="0,0,0,12"
@@ -49,24 +49,24 @@
 
                 <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding EsEdicion, Converter={StaticResource BooleanToStringConverter}, ConverterParameter='Editar Cliente;Nuevo Cliente'}" FontSize="20" FontWeight="Bold" Margin="0,0,0,16"/>
 
-                <TextBox Grid.Row="1" Grid.Column="0" materialDesign:HintAssist.Hint="Nombre *" Text="{Binding FormNombre}" Margin="0,4,8,4" Style="{StaticResource MaterialDesignTextBox}"/>
-                <TextBox Grid.Row="1" Grid.Column="1" materialDesign:HintAssist.Hint="Documento" Text="{Binding FormDocumento}" Margin="8,4,0,4" Style="{StaticResource MaterialDesignTextBox}"/>
+                <TextBox Grid.Row="1" Grid.Column="0" materialDesign:HintAssist.Hint="Nombre *" Text="{Binding FormNombre}" Margin="0,4,8,4"/>
+                <TextBox Grid.Row="1" Grid.Column="1" materialDesign:HintAssist.Hint="Documento" Text="{Binding FormDocumento}" Margin="8,4,0,4"/>
 
-                <TextBox Grid.Row="2" Grid.Column="0" materialDesign:HintAssist.Hint="Teléfono" Text="{Binding FormTelefono}" Margin="0,4,8,4" Style="{StaticResource MaterialDesignTextBox}"/>
-                <TextBox Grid.Row="2" Grid.Column="1" materialDesign:HintAssist.Hint="Email" Text="{Binding FormEmail}" Margin="8,4,0,4" Style="{StaticResource MaterialDesignTextBox}"/>
+                <TextBox Grid.Row="2" Grid.Column="0" materialDesign:HintAssist.Hint="Teléfono" Text="{Binding FormTelefono}" Margin="0,4,8,4"/>
+                <TextBox Grid.Row="2" Grid.Column="1" materialDesign:HintAssist.Hint="Email" Text="{Binding FormEmail}" Margin="8,4,0,4"/>
 
-                <TextBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" materialDesign:HintAssist.Hint="Dirección" Text="{Binding FormDireccion}" Margin="0,4,0,4" Style="{StaticResource MaterialDesignTextBox}"/>
+                <TextBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" materialDesign:HintAssist.Hint="Dirección" Text="{Binding FormDireccion}" Margin="0,4,0,4"/>
 
                 <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
-                    <Button Content="GUARDAR" Command="{Binding ComandoGuardar}" Margin="4" Style="{StaticResource MaterialDesignRaisedButton}"/>
-                    <Button Content="CANCELAR" Command="{Binding ComandoCancelar}" Margin="4" Style="{StaticResource MaterialDesignFlatButton}"/>
+                    <Button Content="GUARDAR" Command="{Binding ComandoGuardar}" Margin="4"/>
+                    <Button Content="CANCELAR" Command="{Binding ComandoCancelar}" Margin="4"/>
                 </StackPanel>
             </Grid>
         </Border>
 
         <DataGrid Grid.Row="2" ItemsSource="{Binding Clientes}" SelectedItem="{Binding ClienteSeleccionado}"
                   AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True"
-                  Style="{StaticResource MaterialDesignDataGrid}"
+                 
                   Visibility="{Binding MostrarFormulario, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="NOMBRE" Binding="{Binding Nombre}" Width="*"/>

@@ -25,14 +25,14 @@
             </Grid.ColumnDefinitions>
 
             <TextBox Grid.Column="0" materialDesign:HintAssist.Hint="Buscar por proveedor o número..."
-                     Style="{StaticResource MaterialDesignTextBox}"
+                    
                      Text="{Binding Busqueda, UpdateSourceTrigger=PropertyChanged}"
                      Margin="0,0,8,0"/>
 
-            <DatePicker Grid.Column="1" materialDesign:HintAssist.Hint="Desde" SelectedDate="{Binding FechaDesde}" Margin="4,0" Style="{StaticResource MaterialDesignDatePicker}"/>
-            <DatePicker Grid.Column="2" materialDesign:HintAssist.Hint="Hasta" SelectedDate="{Binding FechaHasta}" Margin="4,0" Style="{StaticResource MaterialDesignDatePicker}"/>
-            <Button Grid.Column="3" Content="VER DETALLE" Command="{Binding ComandoVerDetalle}" Margin="4,0" Style="{StaticResource MaterialDesignFlatButton}"/>
-            <Button Grid.Column="4" Content="ANULAR" Command="{Binding ComandoAnular}" Margin="4,0" Foreground="Red" Style="{StaticResource MaterialDesignFlatButton}"/>
+            <DatePicker Grid.Column="1" materialDesign:HintAssist.Hint="Desde" SelectedDate="{Binding FechaDesde}" Margin="4,0"/>
+            <DatePicker Grid.Column="2" materialDesign:HintAssist.Hint="Hasta" SelectedDate="{Binding FechaHasta}" Margin="4,0"/>
+            <Button Grid.Column="3" Content="VER DETALLE" Command="{Binding ComandoVerDetalle}" Margin="4,0"/>
+            <Button Grid.Column="4" Content="ANULAR" Command="{Binding ComandoAnular}" Margin="4,0" Foreground="Red"/>
         </Grid>
 
         <Border Grid.Row="2" Background="{DynamicResource MaterialDesignCardBackground}" CornerRadius="8" Padding="20"
@@ -55,7 +55,7 @@
                 <TextBlock Grid.Row="1" Text="{Binding CompraSeleccionada.Fecha, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}" Opacity="0.7" Margin="0,4,0,8"/>
 
                 <DataGrid Grid.Row="2" ItemsSource="{Binding CompraDetalles}" AutoGenerateColumns="False"
-                          CanUserAddRows="False" IsReadOnly="True" Style="{StaticResource MaterialDesignDataGrid}">
+                          CanUserAddRows="False" IsReadOnly="True">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="PRODUCTO" Binding="{Binding Producto.Nombre}" Width="*"/>
                         <DataGridTextColumn Header="CANT." Binding="{Binding Cantidad}" Width="80"/>
@@ -67,14 +67,14 @@
                 <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0">
                     <TextBlock Text="TOTAL:" FontWeight="Bold" FontSize="16" VerticalAlignment="Center"/>
                     <TextBlock Text="{Binding CompraSeleccionada.Total, StringFormat='{}{0:C}'}" FontWeight="Bold" FontSize="16" Margin="8,0,0,0" VerticalAlignment="Center" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
-                    <Button Content="CERRAR" Command="{Binding ComandoCerrarDetalle}" Margin="24,0,0,0" Style="{StaticResource MaterialDesignFlatButton}"/>
+                    <Button Content="CERRAR" Command="{Binding ComandoCerrarDetalle}" Margin="24,0,0,0"/>
                 </StackPanel>
             </Grid>
         </Border>
 
         <DataGrid Grid.Row="2" ItemsSource="{Binding Compras}" SelectedItem="{Binding CompraSeleccionada}"
                   AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True"
-                  Style="{StaticResource MaterialDesignDataGrid}"
+                 
                   Visibility="{Binding MostrarDetalle, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="60"/>

@@ -39,7 +39,7 @@
                 <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
                     <StackPanel x:Name="MenuPanel" Margin="8,0">
                         
-                        <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuDashboard_Click">
+                        <Button HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuDashboard_Click">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="ViewDashboard" Margin="0,0,12,0"/>
                                 <TextBlock Text="Dashboard"/>
@@ -47,19 +47,19 @@
                         </Button>
 
                         <TextBlock Text="VENTAS" FontSize="10" FontWeight="Bold" Foreground="White" Opacity="0.6" Margin="12,16,0,4"/>
-                        <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuRegistrarVenta_Click">
+                        <Button HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuRegistrarVenta_Click">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="CashRegister" Margin="0,0,12,0"/>
                                 <TextBlock Text="Registrar Venta"/>
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuGestionarVentas_Click">
+                        <Button HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuGestionarVentas_Click">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="ClipboardList" Margin="0,0,12,0"/>
                                 <TextBlock Text="Gestionar Ventas"/>
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuClientes_Click">
+                        <Button HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuClientes_Click">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="AccountGroup" Margin="0,0,12,0"/>
                                 <TextBlock Text="Clientes"/>
@@ -67,19 +67,19 @@
                         </Button>
 
                         <TextBlock Text="COMPRAS" FontSize="10" FontWeight="Bold" Foreground="White" Opacity="0.6" Margin="12,16,0,4"/>
-                        <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuRegistrarCompra_Click">
+                        <Button HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuRegistrarCompra_Click">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="CartPlus" Margin="0,0,12,0"/>
                                 <TextBlock Text="Registrar Compra"/>
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuGestionarCompras_Click">
+                        <Button HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuGestionarCompras_Click">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="ClipboardText" Margin="0,0,12,0"/>
                                 <TextBlock Text="Gestionar Compras"/>
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuProveedores_Click">
+                        <Button HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuProveedores_Click">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="TruckDelivery" Margin="0,0,12,0"/>
                                 <TextBlock Text="Proveedores"/>
@@ -87,13 +87,13 @@
                         </Button>
 
                         <TextBlock Text="ALMACÉN" FontSize="10" FontWeight="Bold" Foreground="White" Opacity="0.6" Margin="12,16,0,4"/>
-                        <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuProductos_Click">
+                        <Button HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuProductos_Click">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="PackageVariant" Margin="0,0,12,0"/>
                                 <TextBlock Text="Productos"/>
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuAjustesInventario_Click">
+                        <Button HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuAjustesInventario_Click">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="ArchiveRefresh" Margin="0,0,12,0"/>
                                 <TextBlock Text="Ajustes de Inventario"/>
@@ -101,13 +101,13 @@
                         </Button>
 
                         <TextBlock Text="CAJA" FontSize="10" FontWeight="Bold" Foreground="White" Opacity="0.6" Margin="12,16,0,4"/>
-                        <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuCaja_Click">
+                        <Button HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuCaja_Click">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="CashMultiple" Margin="0,0,12,0"/>
                                 <TextBlock Text="Gestión de Caja"/>
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuGastos_Click">
+                        <Button HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuGastos_Click">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Receipt" Margin="0,0,12,0"/>
                                 <TextBlock Text="Gastos / Caja Chica"/>
@@ -115,13 +115,13 @@
                         </Button>
 
                         <TextBlock Text="SISTEMA" FontSize="10" FontWeight="Bold" Foreground="White" Opacity="0.6" Margin="12,16,0,4"/>
-                        <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuConfiguracion_Click">
+                        <Button HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuConfiguracion_Click">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Cog" Margin="0,0,12,0"/>
                                 <TextBlock Text="Configuración"/>
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuUsuarios_Click">
+                        <Button HorizontalContentAlignment="Left" Width="240" Foreground="White" Click="MenuUsuarios_Click">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="AccountCog" Margin="0,0,12,0"/>
                                 <TextBlock Text="Usuarios"/>
