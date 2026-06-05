@@ -51,8 +51,10 @@ namespace LibriGest.ViewModels
         public bool MostrarDetalle
         {
             get => _mostrarDetalle;
-            set { _mostrarDetalle = value; OnPropertyChanged(nameof(MostrarDetalle)); }
+            set { _mostrarDetalle = value; OnPropertyChanged(nameof(MostrarDetalle)); OnPropertyChanged(nameof(MostrarLista)); }
         }
+
+        public bool MostrarLista => !_mostrarDetalle;
 
         public ICommand ComandoVerDetalle { get; }
         public ICommand ComandoAnular { get; }

@@ -31,8 +31,10 @@ namespace LibriGest.ViewModels
         public bool MostrarFormulario
         {
             get => _mostrarFormulario;
-            set { _mostrarFormulario = value; OnPropertyChanged(nameof(MostrarFormulario)); }
+            set { _mostrarFormulario = value; OnPropertyChanged(nameof(MostrarFormulario)); OnPropertyChanged(nameof(MostrarLista)); }
         }
+
+        public bool MostrarLista => !_mostrarFormulario;
 
         public bool EsEdicion
         {

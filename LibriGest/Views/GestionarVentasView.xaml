@@ -39,7 +39,7 @@
 
         <!-- Detalle (overlay) -->
         <Border Grid.Row="2" Background="{DynamicResource MaterialDesignCardBackground}" CornerRadius="8" Padding="20"
-                Visibility="{Binding MostrarDetalle, Converter={StaticResource BooleanToVisibilityConverter}}">
+                Visibility="{Binding MostrarLista, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -52,7 +52,18 @@
                     <TextBlock Text="Venta #" FontSize="20" FontWeight="Bold"/>
                     <TextBlock Text="{Binding VentaSeleccionada.Id}" FontSize="20" FontWeight="Bold" Margin="4,0,0,0"/>
                     <TextBlock Text="&quot;" Margin="12,0"/>
-                    <TextBlock Text="{Binding VentaSeleccionada.Estado}" FontWeight="Bold" Foreground="{Binding VentaSeleccionada.Estado, Converter={StaticResource EstadoVentaColorConverter}}"/>
+                    <TextBlock Text="{Binding VentaSeleccionada.Estado}" FontWeight="Bold">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Foreground" Value="Green"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding VentaSeleccionada.Estado}" Value="Anulada">
+                                        <Setter Property="Foreground" Value="Red"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
                     <TextBlock Text="&quot;" Margin="0,0,12,0"/>
                 </StackPanel>
 
@@ -80,7 +91,7 @@
         <DataGrid Grid.Row="2" ItemsSource="{Binding Ventas}" SelectedItem="{Binding VentaSeleccionada}"
                   AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True"
                  
-                  Visibility="{Binding MostrarDetalle, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
+                  Visibility="{Binding MostrarLista, Converter={StaticResource BooleanToVisibilityConverter}}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="60"/>
                 <DataGridTextColumn Header="FECHA" Binding="{Binding Fecha, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}" Width="130"/>

@@ -114,8 +114,18 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Text="CAJA" Opacity="0.6" FontSize="12" FontWeight="Bold"/>
-                    <TextBlock Grid.Row="1" Text="{Binding EstadoCaja}" FontSize="20" FontWeight="Bold" 
-                               Foreground="{Binding EstadoCaja, Converter={StaticResource EstadoCajaColorConverter}}"/>
+                    <TextBlock Grid.Row="1" Text="{Binding EstadoCaja}" FontSize="20" FontWeight="Bold">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Foreground" Value="Red"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EstadoCaja}" Value="Abierta">
+                                        <Setter Property="Foreground" Value="Green"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
                     <TextBlock Grid.Row="2" Text="{Binding MontoCaja, StringFormat='{}{0:C}'}" FontSize="16" Opacity="0.8"/>
                 </Grid>
             </Border>

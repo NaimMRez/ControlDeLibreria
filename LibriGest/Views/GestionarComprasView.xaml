@@ -36,7 +36,7 @@
         </Grid>
 
         <Border Grid.Row="2" Background="{DynamicResource MaterialDesignCardBackground}" CornerRadius="8" Padding="20"
-                Visibility="{Binding MostrarDetalle, Converter={StaticResource BooleanToVisibilityConverter}}">
+                Visibility="{Binding MostrarLista, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -75,7 +75,7 @@
         <DataGrid Grid.Row="2" ItemsSource="{Binding Compras}" SelectedItem="{Binding CompraSeleccionada}"
                   AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True"
                  
-                  Visibility="{Binding MostrarDetalle, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
+                  Visibility="{Binding MostrarLista, Converter={StaticResource BooleanToVisibilityConverter}}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="60"/>
                 <DataGridTextColumn Header="FECHA" Binding="{Binding Fecha, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}" Width="130"/>

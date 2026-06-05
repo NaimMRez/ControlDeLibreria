@@ -34,7 +34,7 @@
         </Grid>
 
         <Border Grid.Row="2" Background="{DynamicResource MaterialDesignCardBackground}" CornerRadius="8" Padding="20" Margin="0,0,0,12"
-                Visibility="{Binding MostrarFormulario, Converter={StaticResource BooleanToVisibilityConverter}}">
+                Visibility="{Binding MostrarLista, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -47,7 +47,18 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding EsEdicion, Converter={StaticResource BooleanToStringConverter}, ConverterParameter='Editar Cliente;Nuevo Cliente'}" FontSize="20" FontWeight="Bold" Margin="0,0,0,16"/>
+                <TextBlock Grid.Row="0" Grid.ColumnSpan="2" FontSize="20" FontWeight="Bold" Margin="0,0,0,16">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Text" Value="Nuevo Cliente"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding EsEdicion}" Value="True">
+                                    <Setter Property="Text" Value="Editar Cliente"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
 
                 <TextBox Grid.Row="1" Grid.Column="0" materialDesign:HintAssist.Hint="Nombre *" Text="{Binding FormNombre}" Margin="0,4,8,4"/>
                 <TextBox Grid.Row="1" Grid.Column="1" materialDesign:HintAssist.Hint="Documento" Text="{Binding FormDocumento}" Margin="8,4,0,4"/>
@@ -67,7 +78,7 @@
         <DataGrid Grid.Row="2" ItemsSource="{Binding Clientes}" SelectedItem="{Binding ClienteSeleccionado}"
                   AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True"
                  
-                  Visibility="{Binding MostrarFormulario, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
+                  Visibility="{Binding MostrarLista, Converter={StaticResource BooleanToVisibilityConverter}}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="NOMBRE" Binding="{Binding Nombre}" Width="*"/>
                 <DataGridTextColumn Header="DOCUMENTO" Binding="{Binding Documento}" Width="120"/>

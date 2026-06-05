@@ -20,7 +20,18 @@
         <Border Grid.Row="1" Background="{DynamicResource MaterialDesignCardBackground}" CornerRadius="8" Padding="16" Margin="0,0,0,12">
             <TextBlock>
                 <Run Text="Estado de Caja: "/>
-                <Run Text="{Binding CajaAbierta.Estado}" FontWeight="Bold" Foreground="{Binding CajaAbierta, Converter={StaticResource NullToColorConverter}}"/>
+                <Run Text="{Binding CajaAbierta.Estado}" FontWeight="Bold">
+                    <Run.Style>
+                        <Style TargetType="Run">
+                            <Setter Property="Foreground" Value="Green"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding CajaAbierta}" Value="{x:Null}">
+                                    <Setter Property="Foreground" Value="Red"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Run.Style>
+                </Run>
             </TextBlock>
         </Border>
 
