@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
 
         <!-- Titulo -->
-        <TextBlock Grid.Row="0" Text="Gestionar Ventas" FontSize="28" FontWeight="Bold" Margin="0,0,0,16" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+        <TextBlock Grid.Row="0" Text="Gestionar Ventas" FontSize="28" FontWeight="Bold" Margin="0,0,0,16" Foreground="{DynamicResource MaterialDesign.Brush.Primary}"/>
 
         <!-- Filtros -->
         <Grid Grid.Row="1" Margin="0,0,0,12">
@@ -38,7 +38,7 @@
         </Grid>
 
         <!-- Detalle (overlay) -->
-        <Border Grid.Row="2" Background="{DynamicResource MaterialDesignCardBackground}" CornerRadius="8" Padding="20"
+        <Border Grid.Row="2" Background="White" CornerRadius="8" Padding="20"
                 Visibility="{Binding MostrarLista, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Grid>
                 <Grid.RowDefinitions>
@@ -81,7 +81,7 @@
 
                 <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0">
                     <TextBlock Text="TOTAL:" FontWeight="Bold" FontSize="16" VerticalAlignment="Center"/>
-                    <TextBlock Text="{Binding VentaSeleccionada.Total, StringFormat='{}{0:C}'}" FontWeight="Bold" FontSize="16" Margin="8,0,0,0" VerticalAlignment="Center" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+                    <TextBlock Text="{Binding VentaSeleccionada.Total, StringFormat='{}{0:C}'}" FontWeight="Bold" FontSize="16" Margin="8,0,0,0" VerticalAlignment="Center" Foreground="{DynamicResource MaterialDesign.Brush.Primary}"/>
                     <Button Content="CERRAR" Command="{Binding ComandoCerrarDetalle}" Margin="24,0,0,0"/>
                 </StackPanel>
             </Grid>

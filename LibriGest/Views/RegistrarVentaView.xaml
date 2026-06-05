@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
 
         <!-- Titulo -->
-        <TextBlock Grid.Row="0" Text="Registrar Venta" FontSize="28" FontWeight="Bold" Margin="0,0,0,16" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+        <TextBlock Grid.Row="0" Text="Registrar Venta" FontSize="28" FontWeight="Bold" Margin="0,0,0,16" Foreground="{DynamicResource MaterialDesign.Brush.Primary}"/>
 
         <!-- Barcode + Cliente -->
         <Grid Grid.Row="1" Margin="0,0,0,12">
@@ -77,8 +77,8 @@
             <TextBox Grid.Row="1" Grid.Column="0" materialDesign:HintAssist.Hint="Descuento" Text="{Binding Descuento}" Margin="4"/>
             <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Descuento, StringFormat='{}{0:C}'}" HorizontalAlignment="Right" Margin="4"/>
 
-            <TextBlock Grid.Row="2" Grid.Column="0" Text="TOTAL:" FontSize="18" FontWeight="Bold" Margin="4" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
-            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Total, StringFormat='{}{0:C}'}" FontSize="18" FontWeight="Bold" HorizontalAlignment="Right" Margin="4" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="TOTAL:" FontSize="18" FontWeight="Bold" Margin="4" Foreground="{DynamicResource MaterialDesign.Brush.Primary}"/>
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Total, StringFormat='{}{0:C}'}" FontSize="18" FontWeight="Bold" HorizontalAlignment="Right" Margin="4" Foreground="{DynamicResource MaterialDesign.Brush.Primary}"/>
         </Grid>
 
         <!-- Botones -->

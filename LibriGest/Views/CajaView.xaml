@@ -15,10 +15,10 @@
         </Grid.RowDefinitions>
 
         <!-- Titulo -->
-        <TextBlock Grid.Row="0" Text="Gestión de Caja" FontSize="28" FontWeight="Bold" Margin="0,0,0,16" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+        <TextBlock Grid.Row="0" Text="Gestión de Caja" FontSize="28" FontWeight="Bold" Margin="0,0,0,16" Foreground="{DynamicResource MaterialDesign.Brush.Primary}"/>
 
         <!-- Panel de Apertura -->
-        <Border Grid.Row="1" Background="{DynamicResource MaterialDesignCardBackground}" CornerRadius="8" Padding="20" Margin="0,0,0,12"
+        <Border Grid.Row="1" Background="White" CornerRadius="8" Padding="20" Margin="0,0,0,12"
                 Visibility="{Binding MostrarApertura, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -33,7 +33,7 @@
         </Border>
 
         <!-- Panel de Cierre -->
-        <Border Grid.Row="2" Background="{DynamicResource MaterialDesignCardBackground}" CornerRadius="8" Padding="20" Margin="0,0,0,12"
+        <Border Grid.Row="2" Background="White" CornerRadius="8" Padding="20" Margin="0,0,0,12"
                 Visibility="{Binding MostrarCierre, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -62,7 +62,7 @@
 
                 <StackPanel Grid.Row="0" Grid.RowSpan="4" Grid.Column="2" VerticalAlignment="Center" Margin="24,0,0,0">
                     <TextBlock Text="EFECTIVO ESPERADO:" FontWeight="Bold" HorizontalAlignment="Center"/>
-                    <TextBlock Text="{Binding MontoCierre, StringFormat='{}{0:C}'}" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+                    <TextBlock Text="{Binding MontoCierre, StringFormat='{}{0:C}'}" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Foreground="{DynamicResource MaterialDesign.Brush.Primary}"/>
                     <Button Content="CERRAR CAJA" Command="{Binding ComandoCerrarCaja}" Margin="0,12,0,0" Background="Red"/>
                 </StackPanel>
             </Grid>

@@ -15,7 +15,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="Registrar Compra" FontSize="28" FontWeight="Bold" Margin="0,0,0,16" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+        <TextBlock Grid.Row="0" Text="Registrar Compra" FontSize="28" FontWeight="Bold" Margin="0,0,0,16" Foreground="{DynamicResource MaterialDesign.Brush.Primary}"/>
 
         <Grid Grid.Row="1" Margin="0,0,0,12">
             <Grid.ColumnDefinitions>
@@ -60,8 +60,8 @@
         </DataGrid>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0">
-            <TextBlock Text="TOTAL:" FontWeight="Bold" FontSize="18" VerticalAlignment="Center" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
-            <TextBlock Text="{Binding Total, StringFormat='{}{0:C}'}" FontWeight="Bold" FontSize="24" Margin="8,0,0,0" VerticalAlignment="Center" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+            <TextBlock Text="TOTAL:" FontWeight="Bold" FontSize="18" VerticalAlignment="Center" Foreground="{DynamicResource MaterialDesign.Brush.Primary}"/>
+            <TextBlock Text="{Binding Total, StringFormat='{}{0:C}'}" FontWeight="Bold" FontSize="24" Margin="8,0,0,0" VerticalAlignment="Center" Foreground="{DynamicResource MaterialDesign.Brush.Primary}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">

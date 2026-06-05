@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
 
         <!-- Titulo -->
-        <TextBlock Grid.Row="0" Text="Gestión de Productos" FontSize="28" FontWeight="Bold" Margin="0,0,0,16" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+        <TextBlock Grid.Row="0" Text="Gestión de Productos" FontSize="28" FontWeight="Bold" Margin="0,0,0,16" Foreground="{DynamicResource MaterialDesign.Brush.Primary}"/>
 
         <!-- Toolbar -->
         <Grid Grid.Row="1" Margin="0,0,0,12">
@@ -37,7 +37,7 @@
         </Grid>
 
         <!-- Formulario (condicional) -->
-        <Border Grid.Row="2" Background="{DynamicResource MaterialDesignCardBackground}" 
+        <Border Grid.Row="2" Background="White" 
                 CornerRadius="8" Padding="24" Margin="0,0,0,12"
                 Visibility="{Binding MostrarLista, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Grid>

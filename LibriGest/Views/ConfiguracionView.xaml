@@ -13,9 +13,9 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="Configuración del Sistema" FontSize="28" FontWeight="Bold" Margin="0,0,0,24" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+        <TextBlock Grid.Row="0" Text="Configuración del Sistema" FontSize="28" FontWeight="Bold" Margin="0,0,0,24" Foreground="{DynamicResource MaterialDesign.Brush.Primary}"/>
 
-        <Border Grid.Row="1" Background="{DynamicResource MaterialDesignCardBackground}" CornerRadius="8" Padding="24" MaxWidth="600" HorizontalAlignment="Left">
+        <Border Grid.Row="1" Background="White" CornerRadius="8" Padding="24" MaxWidth="600" HorizontalAlignment="Left">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>

@@ -14,10 +14,10 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="Gastos / Caja Chica" FontSize="28" FontWeight="Bold" Margin="0,0,0,16" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+        <TextBlock Grid.Row="0" Text="Gastos / Caja Chica" FontSize="28" FontWeight="Bold" Margin="0,0,0,16" Foreground="{DynamicResource MaterialDesign.Brush.Primary}"/>
 
         <!-- Estado Caja -->
-        <Border Grid.Row="1" Background="{DynamicResource MaterialDesignCardBackground}" CornerRadius="8" Padding="16" Margin="0,0,0,12">
+        <Border Grid.Row="1" Background="White" CornerRadius="8" Padding="16" Margin="0,0,0,12">
             <TextBlock>
                 <Run Text="Estado de Caja: "/>
                 <Run Text="{Binding CajaAbierta.Estado}" FontWeight="Bold">

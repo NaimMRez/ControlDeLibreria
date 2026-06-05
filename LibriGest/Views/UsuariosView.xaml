@@ -13,7 +13,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="Usuarios del Sistema" FontSize="28" FontWeight="Bold" Margin="0,0,0,16" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+        <TextBlock Grid.Row="0" Text="Usuarios del Sistema" FontSize="28" FontWeight="Bold" Margin="0,0,0,16" Foreground="{DynamicResource MaterialDesign.Brush.Primary}"/>
 
         <Grid Grid.Row="1" Margin="0,0,0,12">
             <Grid.ColumnDefinitions>
@@ -30,7 +30,7 @@
             <Button Grid.Column="3" Content="DESACTIVAR" Command="{Binding ComandoEliminar}" Margin="4,0" Foreground="Red"/>
         </Grid>
 
-        <Border Grid.Row="2" Background="{DynamicResource MaterialDesignCardBackground}" CornerRadius="8" Padding="20" Margin="0,0,0,12"
+        <Border Grid.Row="2" Background="White" CornerRadius="8" Padding="20" Margin="0,0,0,12"
                 Visibility="{Binding MostrarLista, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Grid>
                 <Grid.RowDefinitions>

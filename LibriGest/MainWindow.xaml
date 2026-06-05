@@ -7,8 +7,9 @@
         mc:Ignorable="d"
         Title="LibriGest" Height="700" Width="1200"
         WindowStartupLocation="CenterScreen"
-        Background="{DynamicResource MaterialDesignPaper}"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}">
+        Style="{StaticResource MaterialDesignWindow}"
+        Background="{DynamicResource MaterialDesign.Brush.Background}"
+        TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -17,7 +18,7 @@
         </Grid.ColumnDefinitions>
 
         <!-- Sidebar -->
-        <Border Grid.Column="0" Background="{DynamicResource PrimaryHueMidBrush}" Margin="0">
+        <Border Grid.Column="0" Background="{DynamicResource MaterialDesign.Brush.Primary}" Margin="0">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -33,7 +34,7 @@
                 </StackPanel>
 
                 <!-- Nombre Tienda -->
-                <TextBlock Grid.Row="1" x:Name="TextBlockNombreTienda" Text="Mi Librería" FontSize="14" Foreground="{DynamicResource MaterialDesignDarkForeground}" Margin="16,0,16,16" Opacity="0.8"/>
+                <TextBlock Grid.Row="1" x:Name="TextBlockNombreTienda" Text="Mi Librería" FontSize="14" Foreground="{DynamicResource MaterialDesign.Brush.Primary.Foreground}" Margin="16,0,16,16" Opacity="0.8"/>
 
                 <!-- Menu -->
                 <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
@@ -132,7 +133,7 @@
                 </ScrollViewer>
 
                 <!-- Usuario actual -->
-                <Border Grid.Row="3" Background="{DynamicResource PrimaryHueDarkBrush}" Padding="16">
+                <Border Grid.Row="3" Background="{DynamicResource MaterialDesign.Brush.Primary.Dark}" Padding="16">
                     <StackPanel>
                         <TextBlock x:Name="TextBlockUsuario" Text="Admin" Foreground="White" FontWeight="Bold"/>
                         <TextBlock x:Name="TextBlockRol" Text="Administrador" Foreground="White" Opacity="0.7" FontSize="12"/>
@@ -142,7 +143,7 @@
         </Border>
 
         <!-- Contenido Principal -->
-        <Border Grid.Column="1" Background="{DynamicResource MaterialDesignPaper}">
+        <Border Grid.Column="1" Background="{DynamicResource MaterialDesign.Brush.Background}">
             <ContentControl x:Name="MainContentArea" Margin="24"/>
         </Border>
     </Grid>

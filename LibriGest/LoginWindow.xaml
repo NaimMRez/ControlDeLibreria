@@ -7,8 +7,9 @@
         mc:Ignorable="d"
         Title="LibriGest - Inicio de Sesión" Height="500" Width="400"
         WindowStartupLocation="CenterScreen"
-        Background="{DynamicResource MaterialDesignPaper}"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}">
+        Style="{StaticResource MaterialDesignWindow}"
+        Background="{DynamicResource MaterialDesign.Brush.Background}"
+        TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -16,7 +17,7 @@
         </Grid.RowDefinitions>
 
         <!-- Header -->
-        <Grid Grid.Row="0" Background="{DynamicResource PrimaryHueMidBrush}">
+        <Grid Grid.Row="0" Background="{DynamicResource MaterialDesign.Brush.Primary}">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <materialDesign:PackIcon Kind="BookOpenVariant" Width="64" Height="64" Foreground="White" HorizontalAlignment="Center"/>
                 <TextBlock Text="LibriGest" FontSize="32" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" Margin="0,12,0,0"/>
