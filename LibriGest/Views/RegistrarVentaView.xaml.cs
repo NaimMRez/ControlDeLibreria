@@ -8,6 +8,14 @@ namespace LibriGest.Views
         public RegistrarVentaView()
         {
             InitializeComponent();
+
+            if (!Helpers.Authorization.HasPermission("RegistrarVenta"))
+            {
+                IsEnabled = false;
+                System.Windows.MessageBox.Show("Acceso denegado: no tiene permiso para registrar ventas.", "Acceso", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
+                return;
+            }
+
             DataContext = new ViewModels.RegistrarVentaViewModel();
         }
 

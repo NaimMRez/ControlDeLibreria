@@ -1,4 +1,5 @@
 using LibriGest.Models;
+using LibriGest.Helpers;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
@@ -106,10 +107,17 @@ namespace LibriGest.ViewModels
             }
 
             using var context = new Data.AppDbContext();
+            if (context.Cajas.Any(c => c.Estado == "Abierta"))
+            {
+                MessageBox.Show("Ya existe una caja abierta.", "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
+                CargarDatos();
+                return;
+            }
+
             var nuevaCaja = new Caja
             {
                 FechaApertura = DateTime.Now,
-                UsuarioAperturaId = 1, // TODO: Usuario actual
+                UsuarioAperturaId = SessionContext.CurrentUserId,
                 MontoInicial = MontoApertura,
                 Estado = "Abierta"
             };
@@ -136,7 +144,7 @@ namespace LibriGest.ViewModels
                 if (caja != null)
                 {
                     caja.FechaCierre = DateTime.Now;
-                    caja.UsuarioCierreId = 1; // TODO: Usuario actual
+                    caja.UsuarioCierreId = SessionContext.CurrentUserId;
                     caja.TotalVentas = CajaActual.TotalVentas;
                     caja.TotalGastos = CajaActual.TotalGastos;
                     caja.MontoCierre = MontoCierre;

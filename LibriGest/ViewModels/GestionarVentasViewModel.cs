@@ -1,6 +1,7 @@
 using LibriGest.Models;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using Microsoft.EntityFrameworkCore;
 using System.Windows;
 using System.Windows.Input;
 
@@ -73,6 +74,7 @@ namespace LibriGest.ViewModels
         {
             using var context = new Data.AppDbContext();
             var query = context.Ventas
+                .Include(v => v.Cliente)
                 .Where(v => v.Fecha >= FechaDesde && v.Fecha <= FechaHasta.AddDays(1))
                 .OrderByDescending(v => v.Fecha);
 
@@ -97,6 +99,7 @@ namespace LibriGest.ViewModels
 
             using var context = new Data.AppDbContext();
             var detalles = context.VentaDetalles
+                .Include(d => d.Producto)
                 .Where(d => d.VentaId == VentaSeleccionada.Id)
                 .ToList();
 

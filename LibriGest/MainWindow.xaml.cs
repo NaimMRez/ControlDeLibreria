@@ -24,17 +24,55 @@ namespace LibriGest
 
         private void CargarUsuarioActual()
         {
-            if (Application.Current.Properties["UsuarioActual"] is Usuario usuario)
-            {
-                TextBlockUsuario.Text = usuario.NombreCompleto;
-                TextBlockRol.Text = usuario.Rol;
+            // Normalizar visibilidades por defecto
+            ButtonGestionarCompras.Visibility = Visibility.Visible;
+            ButtonRegistrarCompra.Visibility = Visibility.Visible;
+            ButtonProveedores.Visibility = Visibility.Visible;
+            ButtonProductos.Visibility = Visibility.Visible;
+            ButtonAjustesInventario.Visibility = Visibility.Visible;
+            ButtonCaja.Visibility = Visibility.Visible;
+            ButtonGastos.Visibility = Visibility.Visible;
+            ButtonConfiguracion.Visibility = Visibility.Visible;
+            ButtonUsuarios.Visibility = Visibility.Visible;
+            ButtonGestionarVentas.Visibility = Visibility.Visible;
+            ButtonRegistrarVenta.Visibility = Visibility.Visible;
+            ButtonClientes.Visibility = Visibility.Visible;
 
-                // Control de acceso por rol
-                if (usuario.Rol == "Vendedor")
-                {
-                    // Ocultar opciones de administración
-                    // Esto es básico, se puede mejorar con un sistema de permisos más granular
-                }
+            var usuario = LibriGest.Helpers.SessionContext.CurrentUser;
+            if (usuario == null)
+            {
+                MessageBox.Show("No se ha detectado un usuario en sesión. La aplicación se cerrará.", "Error de Sesión", MessageBoxButton.OK, MessageBoxImage.Error);
+                Close();
+                return;
+            }
+
+            TextBlockUsuario.Text = usuario.NombreCompleto;
+            TextBlockRol.Text = usuario.Rol;
+
+            // Control de acceso por rol
+            if (usuario.Rol == "Vendedor")
+            {
+                ButtonGestionarCompras.Visibility = Visibility.Collapsed;
+                ButtonRegistrarCompra.Visibility = Visibility.Collapsed;
+                ButtonProveedores.Visibility = Visibility.Collapsed;
+                ButtonProductos.Visibility = Visibility.Collapsed;
+                ButtonAjustesInventario.Visibility = Visibility.Collapsed;
+                ButtonCaja.Visibility = Visibility.Collapsed;
+                ButtonGastos.Visibility = Visibility.Collapsed;
+                ButtonConfiguracion.Visibility = Visibility.Collapsed;
+                ButtonUsuarios.Visibility = Visibility.Collapsed;
+            }
+            else if (usuario.Rol == "Almacenero")
+            {
+                ButtonGestionarVentas.Visibility = Visibility.Collapsed;
+                ButtonRegistrarVenta.Visibility = Visibility.Collapsed;
+                ButtonClientes.Visibility = Visibility.Collapsed;
+                ButtonGestionarCompras.Visibility = Visibility.Collapsed;
+                ButtonProveedores.Visibility = Visibility.Collapsed;
+                ButtonCaja.Visibility = Visibility.Collapsed;
+                ButtonGastos.Visibility = Visibility.Collapsed;
+                ButtonConfiguracion.Visibility = Visibility.Collapsed;
+                ButtonUsuarios.Visibility = Visibility.Collapsed;
             }
         }
 

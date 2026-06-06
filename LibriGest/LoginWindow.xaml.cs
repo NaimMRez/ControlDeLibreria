@@ -28,7 +28,7 @@ namespace LibriGest
             if (user != null && BC.Verify(clave, user.ClaveHash))
             {
                 // Guardar usuario actual en sesión (simplificado)
-                Application.Current.Properties["UsuarioActual"] = user;
+                LibriGest.Helpers.SessionContext.SetCurrentUser(user);
                 DialogResult = true;
                 Close();
             }

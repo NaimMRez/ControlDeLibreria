@@ -36,7 +36,7 @@
         </Grid>
 
         <Border Grid.Row="2" Background="White" CornerRadius="8" Padding="20"
-                Visibility="{Binding MostrarLista, Converter={StaticResource BooleanToVisibilityConverter}}">
+            Visibility="{Binding MostrarDetalle, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>

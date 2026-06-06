@@ -1,6 +1,7 @@
 using LibriGest.Models;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using Microsoft.EntityFrameworkCore;
 using System.Windows;
 using System.Windows.Input;
 
@@ -73,6 +74,8 @@ namespace LibriGest.ViewModels
         {
             using var context = new Data.AppDbContext();
             var query = context.Compras
+                .Include(c => c.Proveedor)
+                .Include(c => c.Almacen)
                 .Where(c => c.Fecha >= FechaDesde && c.Fecha <= FechaHasta.AddDays(1))
                 .OrderByDescending(c => c.Fecha);
 
@@ -97,6 +100,7 @@ namespace LibriGest.ViewModels
 
             using var context = new Data.AppDbContext();
             var detalles = context.CompraDetalles
+                .Include(d => d.Producto)
                 .Where(d => d.CompraId == CompraSeleccionada.Id)
                 .ToList();
 
@@ -117,10 +121,19 @@ namespace LibriGest.ViewModels
                     var compra = context.Compras.Find(CompraSeleccionada.Id);
                     if (compra != null)
                     {
+                        var detalles = context.CompraDetalles.Where(d => d.CompraId == compra.Id).ToList();
+                        foreach (var detalle in detalles)
+                        {
+                            var stock = context.Stocks.FirstOrDefault(s => s.ProductoId == detalle.ProductoId && s.AlmacenId == compra.AlmacenId);
+                            if (stock == null || stock.Cantidad - detalle.Cantidad < 0)
+                            {
+                                throw new InvalidOperationException($"No se puede anular la compra porque dejaría stock negativo en el producto {detalle.ProductoId}.");
+                            }
+                        }
+
                         compra.Estado = "Anulada";
 
                         // Revertir stock
-                        var detalles = context.CompraDetalles.Where(d => d.CompraId == compra.Id).ToList();
                         foreach (var detalle in detalles)
                         {
                             var stock = context.Stocks.FirstOrDefault(s => s.ProductoId == detalle.ProductoId && s.AlmacenId == compra.AlmacenId);

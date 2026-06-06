@@ -38,7 +38,7 @@
                          Text="{Binding Telefono}" Margin="0,4"/>
 
                 <ComboBox Grid.Row="3" materialDesign:HintAssist.Hint="Moneda"
-                          SelectedItem="{Binding Moneda}" Margin="0,4">
+                          SelectedValuePath="Content" SelectedValue="{Binding Moneda}" Margin="0,4">
                     <ComboBoxItem Content="S/"/>
                     <ComboBoxItem Content="$"/>
                     <ComboBoxItem Content="€"/>

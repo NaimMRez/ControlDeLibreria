@@ -1,7 +1,7 @@
 using LibriGest.Models;
-using LibriGest.ViewModels;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using Microsoft.EntityFrameworkCore;
 using System.Windows;
 using System.Windows.Input;
 
@@ -76,7 +76,11 @@ namespace LibriGest.ViewModels
         private void CargarDatos()
         {
             using var context = new Data.AppDbContext();
-            var productos = context.Productos.Where(p => p.Activo).ToList();
+            var productos = context.Productos
+                .Include(p => p.Categoria)
+                .Include(p => p.Unidad)
+                .Where(p => p.Activo)
+                .ToList();
             Productos.Clear();
             foreach (var p in productos) Productos.Add(p);
 
@@ -90,7 +94,10 @@ namespace LibriGest.ViewModels
         private void FiltrarProductos()
         {
             using var context = new Data.AppDbContext();
-            var query = context.Productos.Where(p => p.Activo);
+            var query = context.Productos
+                .Include(p => p.Categoria)
+                .Include(p => p.Unidad)
+                .Where(p => p.Activo);
 
             if (!string.IsNullOrWhiteSpace(Busqueda))
             {
@@ -178,8 +185,9 @@ namespace LibriGest.ViewModels
                     Activo = true
                 };
                 context.Productos.Add(nuevo);
+                context.SaveChanges();
 
-                // Crear stock inicial en almacén principal
+                // Crear stock inicial ya con el Id real del producto
                 var almacenPrincipal = context.Almacenes.FirstOrDefault();
                 if (almacenPrincipal != null)
                 {

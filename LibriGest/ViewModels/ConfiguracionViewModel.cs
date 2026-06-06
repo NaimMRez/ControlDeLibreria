@@ -78,7 +78,14 @@ namespace LibriGest.ViewModels
             if (config != null)
             {
                 config.Valor = valor;
+                return;
             }
+
+            context.ConfiguracionSistema.Add(new ConfiguracionSistema
+            {
+                Clave = clave,
+                Valor = valor
+            });
         }
 
         private void OnPropertyChanged(string propertyName)

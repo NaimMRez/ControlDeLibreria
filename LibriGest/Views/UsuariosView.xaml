@@ -31,9 +31,10 @@
         </Grid>
 
         <Border Grid.Row="2" Background="White" CornerRadius="8" Padding="20" Margin="0,0,0,12"
-                Visibility="{Binding MostrarLista, Converter={StaticResource BooleanToVisibilityConverter}}">
+                Visibility="{Binding MostrarFormulario, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -62,7 +63,7 @@
 
                 <PasswordBox Grid.Row="2" Grid.Column="0" x:Name="PasswordBoxClave" materialDesign:HintAssist.Hint="Contraseña" Margin="0,4,8,4"/>
                 <ComboBox Grid.Row="2" Grid.Column="1" materialDesign:HintAssist.Hint="Rol"
-                          SelectedItem="{Binding FormRol}" Margin="8,4,0,4">
+                          SelectedValuePath="Content" SelectedValue="{Binding FormRol}" Margin="8,4,0,4">
                     <ComboBoxItem Content="Administrador"/>
                     <ComboBoxItem Content="Vendedor"/>
                     <ComboBoxItem Content="Almacenero"/>

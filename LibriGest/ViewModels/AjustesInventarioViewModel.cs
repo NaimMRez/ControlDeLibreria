@@ -1,4 +1,5 @@
 using LibriGest.Models;
+using LibriGest.Helpers;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
@@ -6,14 +7,35 @@ using System.Windows.Input;
 
 namespace LibriGest.ViewModels
 {
-    public class ItemAjuste
+    public class ItemAjuste : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        private int _cantidadNueva;
+
         public int ProductoId { get; set; }
         public string? CodigoBarras { get; set; }
         public string Nombre { get; set; } = "";
         public int CantidadAnterior { get; set; }
-        public int CantidadNueva { get; set; }
+
+        public int CantidadNueva
+        {
+            get => _cantidadNueva;
+            set
+            {
+                if (_cantidadNueva == value) return;
+                _cantidadNueva = value;
+                OnPropertyChanged(nameof(CantidadNueva));
+                OnPropertyChanged(nameof(Diferencia));
+            }
+        }
+
         public int Diferencia => CantidadNueva - CantidadAnterior;
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 
     public class AjustesInventarioViewModel : INotifyPropertyChanged
@@ -145,7 +167,7 @@ namespace LibriGest.ViewModels
                 {
                     Fecha = DateTime.Now,
                     AlmacenId = AlmacenSeleccionado.Id,
-                    UsuarioId = 1,
+                    UsuarioId = SessionContext.CurrentUserId,
                     Tipo = Tipo,
                     Motivo = Motivo
                 };

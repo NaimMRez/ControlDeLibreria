@@ -47,7 +47,8 @@
 
             <TextBox Grid.Column="0" materialDesign:HintAssist.Hint="Concepto" Text="{Binding Concepto}" Margin="0,0,8,0"/>
             <TextBox Grid.Column="1" materialDesign:HintAssist.Hint="Monto" Text="{Binding Monto}" Margin="4,0"/>
-            <ComboBox Grid.Column="2" materialDesign:HintAssist.Hint="Categoría" Text="{Binding Categoria}" Margin="4,0">
+            <ComboBox Grid.Column="2" materialDesign:HintAssist.Hint="Categoría"
+                      SelectedValuePath="Content" SelectedValue="{Binding Categoria}" Margin="4,0">
                 <ComboBoxItem Content="General"/>
                 <ComboBoxItem Content="Servicios"/>
                 <ComboBoxItem Content="Transporte"/>

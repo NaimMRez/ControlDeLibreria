@@ -1,3 +1,4 @@
+using System.Windows;
 using System.Windows.Controls;
 
 namespace LibriGest.Views
@@ -7,6 +8,14 @@ namespace LibriGest.Views
         public ProductosView()
         {
             InitializeComponent();
+
+            if (!Helpers.Authorization.HasPermission("Productos"))
+            {
+                IsEnabled = false;
+                MessageBox.Show("Acceso denegado: no tiene permiso para ver productos.", "Acceso", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
             DataContext = new ViewModels.ProductosViewModel();
         }
     }

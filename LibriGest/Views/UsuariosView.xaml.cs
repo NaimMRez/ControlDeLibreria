@@ -8,6 +8,14 @@ namespace LibriGest.Views
         public UsuariosView()
         {
             InitializeComponent();
+
+            if (!Helpers.Authorization.HasPermission("Usuarios"))
+            {
+                IsEnabled = false;
+                System.Windows.MessageBox.Show("Acceso denegado: necesita permisos para gestionar usuarios.", "Acceso", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
+                return;
+            }
+
             DataContext = new ViewModels.UsuariosViewModel();
         }
 

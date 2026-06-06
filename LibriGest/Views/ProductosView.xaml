@@ -39,9 +39,10 @@
         <!-- Formulario (condicional) -->
         <Border Grid.Row="2" Background="White" 
                 CornerRadius="8" Padding="24" Margin="0,0,0,12"
-                Visibility="{Binding MostrarLista, Converter={StaticResource BooleanToVisibilityConverter}}">
+                Visibility="{Binding MostrarFormulario, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>

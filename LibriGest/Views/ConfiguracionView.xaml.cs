@@ -7,6 +7,14 @@ namespace LibriGest.Views
         public ConfiguracionView()
         {
             InitializeComponent();
+
+            if (!Helpers.Authorization.HasPermission("Configuracion"))
+            {
+                IsEnabled = false;
+                System.Windows.MessageBox.Show("Acceso denegado: necesita permisos de administrador para ver configuración.", "Acceso", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
+                return;
+            }
+
             DataContext = new ViewModels.ConfiguracionViewModel();
         }
     }

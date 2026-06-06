@@ -1,5 +1,6 @@
 using LibriGest.Models;
 using LibriGest.ViewModels;
+using LibriGest.Helpers;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
@@ -7,14 +8,47 @@ using System.Windows.Input;
 
 namespace LibriGest.ViewModels
 {
-    public class ItemVenta
+    public class ItemVenta : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        private int _cantidad = 1;
+        private decimal _precioUnitario;
+
         public int ProductoId { get; set; }
         public string? CodigoBarras { get; set; }
         public string Nombre { get; set; } = "";
-        public int Cantidad { get; set; } = 1;
-        public decimal PrecioUnitario { get; set; }
+
+        public int Cantidad
+        {
+            get => _cantidad;
+            set
+            {
+                if (_cantidad == value) return;
+                _cantidad = value;
+                OnPropertyChanged(nameof(Cantidad));
+                OnPropertyChanged(nameof(Total));
+            }
+        }
+
+        public decimal PrecioUnitario
+        {
+            get => _precioUnitario;
+            set
+            {
+                if (_precioUnitario == value) return;
+                _precioUnitario = value;
+                OnPropertyChanged(nameof(PrecioUnitario));
+                OnPropertyChanged(nameof(Total));
+            }
+        }
+
         public decimal Total => Cantidad * PrecioUnitario;
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 
     public class RegistrarVentaViewModel : INotifyPropertyChanged
@@ -90,6 +124,8 @@ namespace LibriGest.ViewModels
                 if (itemExistente != null)
                 {
                     itemExistente.Cantidad++;
+                    OnPropertyChanged(nameof(SubTotal));
+                    OnPropertyChanged(nameof(Total));
                 }
                 else
                 {
@@ -136,7 +172,7 @@ namespace LibriGest.ViewModels
                 {
                     Fecha = DateTime.Now,
                     ClienteId = ClienteSeleccionado?.Id,
-                    UsuarioId = 1, // TODO: Usuario actual
+                    UsuarioId = SessionContext.CurrentUserId,
                     SubTotal = SubTotal,
                     Descuento = Descuento,
                     Total = Total,
@@ -148,6 +184,12 @@ namespace LibriGest.ViewModels
 
                 foreach (var item in Items)
                 {
+                    var stock = context.Stocks.FirstOrDefault(s => s.ProductoId == item.ProductoId);
+                    if (stock == null || stock.Cantidad < item.Cantidad)
+                    {
+                        throw new InvalidOperationException($"Stock insuficiente para '{item.Nombre}'.");
+                    }
+
                     context.VentaDetalles.Add(new VentaDetalle
                     {
                         VentaId = venta.Id,
@@ -157,12 +199,7 @@ namespace LibriGest.ViewModels
                         Total = item.Total
                     });
 
-                    // Descontar stock
-                    var stock = context.Stocks.FirstOrDefault(s => s.ProductoId == item.ProductoId);
-                    if (stock != null)
-                    {
-                        stock.Cantidad -= item.Cantidad;
-                    }
+                    stock.Cantidad -= item.Cantidad;
                 }
 
                 context.SaveChanges();

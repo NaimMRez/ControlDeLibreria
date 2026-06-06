@@ -8,6 +8,14 @@ namespace LibriGest.Views
         public AjustesInventarioView()
         {
             InitializeComponent();
+
+            if (!Helpers.Authorization.HasPermission("AjustesInventario"))
+            {
+                IsEnabled = false;
+                System.Windows.MessageBox.Show("Acceso denegado: no tiene permiso para ajustes de inventario.", "Acceso", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
+                return;
+            }
+
             DataContext = new ViewModels.AjustesInventarioViewModel();
         }
 

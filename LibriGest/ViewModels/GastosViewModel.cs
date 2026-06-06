@@ -1,4 +1,5 @@
 using LibriGest.Models;
+using LibriGest.Helpers;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
@@ -102,7 +103,7 @@ namespace LibriGest.ViewModels
                 Monto = Monto,
                 Categoria = Categoria,
                 Comprobante = Comprobante,
-                UsuarioId = 1 // TODO: Usuario actual
+                UsuarioId = SessionContext.CurrentUserId
             };
 
             context.Gastos.Add(gasto);
